@@ -1,0 +1,30 @@
+.sliding-div {
+  background-color: #acbbbd;
+  background-position: 40% 50%;
+  background-repeat: no-repeat;
+
+  transition: height 0.5s ease;
+
+  .slide-title {
+    transition: margin-top 0.5s ease;
+  }
+  .slide-background, .slide-content, .slide-button {
+    opacity: 0.01;
+    transition: opacity 0.5s ease;
+  }
+  .slide-background {
+    display: block;
+  }
+
+  &:hover {
+    height: 390px;
+    .slide-title { margin-top: 12px; }
+    .slide-content, .slide-button { opacity: 1; }
+  }
+
+  &.not_this_hovered {
+    height: 102px;
+
+    .slide-background { opacity: 0.5; }
+  }
+}
