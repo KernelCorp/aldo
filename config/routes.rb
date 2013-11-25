@@ -3,4 +3,5 @@ Aldo::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   root to: 'main#index'
+  get 'contacts', to: 'main#contacts'
 end
