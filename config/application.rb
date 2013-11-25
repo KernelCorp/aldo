@@ -58,5 +58,8 @@ module Aldo
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Paperclip defaults
+    config.paperclip_defaults = { :convert_options => { :all => ' -interlace Line' } }
   end
 end

@@ -50,6 +50,10 @@ GEM
       thor
     builder (3.0.4)
     cancan (1.6.10)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.3)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -83,7 +87,7 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.1)
-    kaminari (0.14.1)
+    kaminari (0.15.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     libv8 (3.16.14.3)
@@ -95,10 +99,16 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
-    mime-types (1.25)
+    mime-types (1.25.1)
     multi_json (1.8.2)
-    mysql2 (0.3.14)
+    mysql2 (0.3.11)
+    mysql2 (0.3.11-x86-mingw32)
     orm_adapter (0.5.0)
+    paperclip (3.5.2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -181,7 +191,8 @@ DEPENDENCIES
   devise
   jquery-rails (< 3.0.0)
   jquery-turbolinks
-  mysql2
+  mysql2 (= 0.3.11)
+  paperclip
   rails (= 3.2.13)
   russian
   sass-rails (~> 3.2.3)
