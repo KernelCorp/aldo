@@ -1,0 +1,57 @@
+.for-news id='slide-1'
+  .slide-background
+  .slide-title Новости
+  .slide-wrapper
+
+    .col1
+      .slide-date 28.10.2013
+      .slide-content: span ALDO COPPOLA  объявляет кастинг!
+      .slide-button: a href="/academy/news/news_21.html" Читать
+    
+    .col2
+      .slide-date 13.09.2013
+      .slide-content: span Академия Aldo Coppola приглашает пройти обучение</span> <span>осенью 2013 года
+      .slide-button: a href="/academy/news/news_20.html" Читать
+    
+    .col3
+      .slide-date 07.09.2013
+      .slide-content: span Beauty-suit от Cirque du Soleil
+      .slide-button: a href="/news/news_75.html" Читать
+           
+  .slide-shadow
+
+.sliding-div id="slide-2" style='background-image: url("/images/main_slide_2.jpg");'
+  .slide-background
+  .slide-title О компании
+  .slide-wrapper
+
+    .slide-content Aldo Coppola — один из наиболее авторитетных брендов в мировой индустрии моды и красоты. Итальянская империя носит имя своего создателя — непревзойденного стилиста Альдо Коппола. Уникальный подход к созданию стрижек и укладок, огромный творческий потенциал и неповторимая харизма, принесли маэстро Альдо мировую известность.
+
+    .slide-button: a href="/about-company/" Перейти в раздел
+
+  .slide-shadow
+
+.sliding-div id="slide-7" style='background-image: url("/images/main_slide_7.jpg");'
+  .slide-background
+  .slide-title Пресса о нас
+  .slide-wrapper
+
+    .slide-content Центры красоты и эксклюзивная продукция становятся объектами непрерывного внимания со стороны прессы, а мастера Aldo Coppola являются участниками ярких фотосессий и героями многочисленных beauty-публикаций.
+
+    .slide-button: a href="/press/" Перейти в раздел
+
+  .slide-shadow
+
+javascript:
+  (function(){
+    var slidings = $('.sliding-div');
+
+    slidings
+    .on('mouseenter', function(e){
+      slidings.addClass('not_this_hovered');
+      $(this).removeClass('not_this_hovered');
+    })
+    .on('mouseleave', function(e){
+      slidings.removeClass('not_this_hovered');
+    });
+  })();
