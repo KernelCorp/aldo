@@ -1,0 +1,56 @@
+html
+  head
+    title Aldo
+    = stylesheet_link_tag    'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  body
+    #wrapper
+      #header
+        img id="logo" src="/images/logo.jpg" alt="ALDO COPPOLA"
+
+        #contacts
+          ul
+            li: a href="/contacts" Контактная информация
+            li: a href="/eng" In english
+
+          span.phone +7 (495) 646-58-79
+
+        #menu
+          ul
+            li: a href="/news/" Новости
+            li: a href="/about-company/" О компании
+            li: a href="/art/" Art
+            li: a href="/press/" Пресса о нас
+            li: a href="/agency/" Агентство
+            li: a href="/beauty-centers/addresses" Центры красоты
+            li: a href="/franchising/" Франчайзинг
+            li: a href="/production/aldo-coppola/" Продукция
+            li: a href="/academy/" Академия
+
+        .header-shadow
+
+      #content
+
+        = yield
+
+      #footer
+        #footerLeft
+          a href="http://www.aldocoppola.ru/": img class="ico-footer" src="/images/idle.png"
+          '  © 1994 - 2013
+          | «<a href="http://www.aldocoppola.ru">ALDO COPPOLA</a>» .
+          | <a href="http://optimabeauty.ru/" target="_blank">OPTIMA BEAUTY</a>
+
+        #footerRight
+          a href="http://www.facebook.com/aldocoppola.ru" target="_blank": .link_facebook
+          a href="http://www.youtube.com/user/CoppolaAldo/" target="_blank": .link_youtube
+          a href="/contacts/" КОНТАКТЫ
+          '  .
+          a href="/beauty-centers/addresses/" ЦЕНТРЫ КРАСОТЫ
+          '  . 
+          a.ikralink href="http://www.infocreative.ru/services/website/" Разработка сайта
+          '  — 
+          a.ikralink href="http://www.infocreative.ru" ИКРА
+
+        .footer-shadow

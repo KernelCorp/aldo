@@ -6,6 +6,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem "slim-rails", "~> 2.0.3"
 
 #turbolinks
 gem 'turbolinks'

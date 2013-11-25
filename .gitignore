@@ -18,4 +18,4 @@
 /config/database.yml
 /Gemfile.local
 
-
+public/system
