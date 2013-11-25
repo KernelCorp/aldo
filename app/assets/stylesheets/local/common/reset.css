@@ -1,0 +1,154 @@
+/*------------------------------------------
+--  Reseting -------------------------------
+------------------------------------------*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, 
+cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, 
+li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 1em;
+  font-family: inherit;
+  vertical-align: baseline;
+  -webkit-text-size-adjust: none;
+}
+:focus {outline: 0;}
+
+body {
+    padding: 0;
+    margin: 0;
+  font-size: 62.5%;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #414141;
+}
+table {
+    font-size: inherit;
+    font: 100%;
+}
+ul {
+    list-style: none;
+    margin-top: 0;
+    margin-left: 0;
+}
+img {
+    border: 0;
+}
+p {
+  font-size: 1.4em;
+  line-height: 1.3em;
+    margin: 0 0 1px;
+}
+input, textarea{
+    font-family: "Trebuchet MS", Arial, Tahoma, Geneva, sans-serif;
+}
+:outline,:focus
+{
+    outline: none;
+}
+sup       
+{ 
+  font-size: 0.8em; 
+  position: relative; 
+  top: -3px 
+}
+sub       
+{ 
+  font-size: 0.8em;  
+  position: relative; 
+  bottom: -2px
+}
+/* Links
+------------------------------------------*/
+
+a
+{ 
+  text-decoration: underline;
+  color: #583ea7;
+}
+a:hover     
+{ 
+  text-decoration: underline;
+}
+a img     
+{ 
+  border: none 
+}
+
+/* Global Classes
+------------------------------------------*/
+
+.clear      
+{ 
+  clear: left 
+}
+.floatLeft    
+{ 
+  float: left 
+}
+.floatRight   
+{ 
+  float: right 
+}
+
+.noPadding    
+{ 
+  padding: 0 !important; 
+}
+.noMargin   
+{ 
+  margin: 0 !important; 
+}
+
+.noBorder   
+{ 
+  border: none !important;
+}
+.noBg     
+{ 
+  background: none !important; 
+}
+
+.imgLeft    
+{ 
+  float: left; 
+  margin: 0 15px 15px 0 
+}
+.imgRight   
+{ 
+  float: right; 
+  margin: 0 0 15px 15px 
+}
+
+.cf:after 
+{ 
+  content: ".";
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden 
+}
+.cf     
+{ 
+  display: inline-block 
+}
+
+/* Hides from IE-mac \*/
+* html .cf 
+{ 
+  height: 1% 
+}
+.cf     
+{ 
+  display: block 
+}
+
+input[type=submit],
+    input[type=reset],
+    input[type=button]
+    {
+        filter:chroma(color=#000000);
+        color:#010101;
+    }
