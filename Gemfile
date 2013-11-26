@@ -5,13 +5,9 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '0.3.11'
+gem 'mysql2', '~> 0.3.11'
 gem "slim-rails", "~> 2.0.3"
 gem 'paperclip'
-
-#turbolinks
-gem 'turbolinks'
-gem 'jquery-turbolinks'
 
 gem 'devise'
 gem 'cancan'
