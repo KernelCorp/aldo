@@ -7,4 +7,7 @@ class MainController < ApplicationController
 
   def about
   end
+
+  def about_biography
+  end
 end
