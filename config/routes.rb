@@ -4,4 +4,5 @@ Aldo::Application.routes.draw do
 
   root to: 'main#index'
   get 'contacts', to: 'main#contacts'
+  get 'about-company', to: 'main#about'
 end

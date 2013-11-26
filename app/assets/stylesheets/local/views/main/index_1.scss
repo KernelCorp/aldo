@@ -29,8 +29,6 @@
 
   &.not_this_hovered {
     height: 102px;
-    .slide-background {
-      opacity: 0.5; 
-    }
+    .slide-background { opacity: 0.5; }
   }
 }
