@@ -1,0 +1,40 @@
+._master {
+  margin-left: -20px;
+
+  > img {
+    width: 230px;
+    height: 230px;
+  }
+
+  ._master_description {
+    margin-left: 10px;
+    padding-top: 5px;
+    text-transform: none;
+    color: rgb( 98,108,108 );
+  }
+
+  ._master_fio {
+    font-size: 24px;
+    padding-bottom: 5px;
+  }
+
+  ._master_biography {
+    font-size: 14px;
+
+    b {
+      font-family: 'PFBeauSansProBlackRegular';
+    }
+
+    p:first-child {
+      font-size: 18px;
+    }
+
+    p {
+      margin-top: 20px;
+    }
+  }
+
+  + ._master {
+    margin-top: 30px;
+  }
+}

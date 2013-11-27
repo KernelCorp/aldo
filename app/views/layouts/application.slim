@@ -16,25 +16,26 @@ html
             li.last style='float: right;'
               a href="/contacts" Контактная информация
 
-          span.phone +7 (495) 646-58-79
+          span.phone +7 (383) 291-65-01
+          span.phone +7 (383) 223-24-00
 
         #menu
           ul
-            li: a href="/news/" Новости
-            li: a href="/about-company/" О компании
-            li: a href="/art/" Art
-            li: a href="/press/" Пресса о нас
-            li: a href="/agency/" Агентство
-            li: a href="/beauty-centers/addresses" Центры красоты
-            li: a href="/franchising/" Франчайзинг
-            li: a href="/production/aldo-coppola/" Продукция
-            li: a href="/academy/" Академия
+            li: a href="/news" Новости
+            li: a href="/about" О компании
+            li: a href="/arts" Art
+            li: a href="/salon" Наш салон
+            li: a href="/services" Услуги
+            li: a href="/productions" Продукция
+            li: a href="/press" Пресса о нас
 
         .header-shadow
 
       #content
 
         = yield
+
+      #_background
 
       #footer
         #footerLeft
@@ -46,9 +47,7 @@ html
         #footerRight
           a href="http://www.facebook.com/aldocoppola.ru" target="_blank": .link_facebook
           a href="http://www.youtube.com/user/CoppolaAldo/" target="_blank": .link_youtube
-          a href="/contacts/" КОНТАКТЫ
-          '  .
-          a href="/beauty-centers/addresses/" ЦЕНТРЫ КРАСОТЫ
+          a href="/contacts/" Контакты
           '  . 
           a.ikralink href="http://www.infocreative.ru/services/website/" Разработка сайта
           '  — 

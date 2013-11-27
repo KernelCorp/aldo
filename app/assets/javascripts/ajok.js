@@ -1,9 +1,16 @@
 var doc = $(document);
 
+var ajok = 
+{
+	i : 1,
+	state: { i : 0 },
+	containers: {}
+};
+
 jQuery.fn.extend({
-  ajok_append: function( fun ) {
+  ajok_attach: function( fun ) {
     return this.each(function() {
-    	$(this).on('ajok:append', function(e){
+    	$(this).on('ajok:attach', function(e){
     		if( e.target == this ) fun();
     	});
     });
@@ -17,170 +24,181 @@ jQuery.fn.extend({
   }
 });
 
-doc.on('ajok:append', function(e){
-	var t = $(e.target);
-	if( t.attr('data-menu') != undefined ) ajok_menu( t.attr('data-menu') );
-})
-
-var ajok = 
-{
-	i : 1,
-	state: { i : 0 },
-	containers: {}
-}
-
 function history_container( selector, request0 ){
 	if( ! history.pushState ) return false;
+
+	var house = $( selector );
 	
-	if( $( selector ).data("container") != undefined ){
-		log( selector + "container two times" );
+	if( house.data("container") ){
+		log( selector + " container two times" );
 		return false;
 	}
 	
 	var hc =
 	{
-		currentKey: "",
-		house: $( selector ),
+		key: "",
+		house: house,
 		
-		request: function( his, requestKey, requestUrl ) {
-			if( requestKey == this.currentKey ) return;
+		request: function( position, key, url ) {
+			if( key == this.key ) return;
 		
-			request0.call( this, his, requestKey, requestUrl );
+			request0.call( this, position, key, url );
 		},
 		
-		remember: function( his, key, url ){
-			this.currentKey = key;
+		remember: function( position, key, url ){
+			this.key = key;
+			ajok.containers[ selector ] = true;
 	
-			if( his ){
+			if( position != 'old_cache' ){
 				var state = 
 				{ 
 					who : selector,
-					i : ( his == 1 ) ? ajok.i++ : ajok.state.i
+					i : ( position == 'new' ) ? ajok.i++ : ajok.state.i
 				};
 				
-				for( c in ajok.containers ){
-					if( ajok.containers[ c ] ){
-						state[ c ] = $( c ).data("container").currentKey;
-					}
-				}
+				for( c in ajok.containers )
+					if( ajok.containers[ c ] )
+						state[ c ] = $( c ).data("container").key;
 				
-				if( his == 1 ) history.pushState( state, document.title, url);
+				if( position == 'new' ) history.pushState( state, document.title, url);
 				else
-				if( his == 2 ) history.replaceState( state, document.title, url);
+				if( position == 'old' ) history.replaceState( state, document.title, url);
 			}
 			
 			ajok.state = history.state;
 		},
-		
-		attachTo: function( room ){
-			room.on("ajok:append", function(){
-				ajok.containers[ selector ] = true;
-			});
-			
-			room.on("ajok:detach", function(){
-				ajok.containers[ selector ] = false;
-			});
-			
-			return this;
+
+		forget: function(){
+			ajok.containers[ selector ] = false;
 		}
 	}
 	
-	$( selector ).data({ container : hc });
+	house.data({ container : hc });
 	
 	return hc;
 }
 
 function ajok_container( selector, rabota, changeRoom0 ){
-	function changeRoom( his, requestKey, requestUrl, room, nov ){
-			
-		this.room.trigger("ajok:detach");
-		this.room.detach();
-		
-		this.room = $( room );
-		this.room.appendTo( this.house );
-		this.room.trigger("ajok:append");
-		
-		changeRoom0.call( this, his, requestKey, requestUrl, room, nov );
-		
-		this.remember( his, requestKey, requestUrl );
-		
-		if( nov ) this.cache[ requestKey ] = this.room;
-	}
 
 	var ac = history_container(
 		selector,
 		
-		function request0( his, requestKey, requestUrl ) {
+		function request0( position, key, url ) {
 			
-			if( this.cache[ requestKey ] != undefined )
+			if( this.cache[ key ] )
 			{
 				changeRoom.call(
 					this,
-					2 - his, 
-					requestKey,
-					requestUrl,
-					this.cache[ requestKey ], 
-					false
+					( position == 'old' ) ? 'old_cache' : position, 
+					key,
+					url,
+					this.cache[ key ], 
+					true
 				);
 			}
 			else 
 			{
 				var thos = this;
 				$.get(
-					requestKey,
+					key,
 					function( data ){
 						changeRoom.call(
 							thos,
-							his, 
-							requestKey,
-							requestUrl,
+							position, 
+							key,
+							url,
 							rabota.call( thos, data ),
-							true 
+							false 
 						);
 					}
 				);
 			}
 		}
 	);
-	
-	ac.cache = {};
-	ac.room = {};
 
 	ac.reload = function(){
 		var thos = this;
 		$.get(
-			thos.currentKey,
+			thos.key,
 			function( data ){
 				changeRoom.call(
 					thos,
-					0, 
-					thos.currentKey,
-					"",
+					'old_cache', 
+					thos.key,
+					'',
 					rabota.call( thos, data ),
-					true 
+					false 
 				);
 			}
 		);
-	}
+	};
 	
-	ac.initi = function( currentKey, room, attach ){
-		if( attach != undefined ){
-			ac.attachTo( attach );
-		}
-		
-		ac.currentKey = currentKey;
-		ac.room = room.trigger("ajok:append");
-		ac.cache[ currentKey ] = room;
+	ac.initi = function( key, room ){
+		ac.key = key;
+		ac.room = room.trigger("ajok:attach");
+		ac.cache[ key ] = room;
+
+		changeRoom0.call( this );
 		
 		var state = ( history.state ) ? history.state : {};
-		state[ selector ] = currentKey;
+		state[ selector ] = key;
 		history.replaceState( state, document.title );
+	};
+	
+	ac.cache = {};
+	ac.room = {};
+
+	function changeRoom( position, key, url, room, cache ){
+		this.room.trigger("ajok:detach");
+		this.room.detach();
+		
+		this.room = $( room );
+
+		this.room.appendTo( this.house );
+		this.room.trigger("ajok:attach");
+		
+		changeRoom0.call( this, { position: position, key: key, url: url, room: room, cache: cache } );
+		
+		this.remember( position, key, url );
+		
+		if( !cache ) this.cache[ key ] = this.room;
 	}
 	
 	return ac;
 }
 
+window.addEventListener('popstate', function(event) {
+	if (
+		event.state != undefined && 
+		event.state.who != undefined
+	){
+		var who = ( event.state.i > ajok.state.i ) ? event.state.who : ajok.state.who;
+		
+		$( who ).data("container").request( 'old', event.state[who] );
+	}
+});
+
+// local
+
 var aj = {};
+
+doc.on('mousedown', 'a', function(e){
+	var t = $(this);
+
+	if( 
+		t.attr("href") != undefined && 
+		t.attr("href")[0] == "/" &&
+		t.attr("j") == undefined
+	){
+		t
+		.attr("j", 1)
+		.on('click', function(e){
+			if( e.which != undefined && e.which != 1 ) return;
+			if( t.attr("href") ) aj.request( 'new', t.attr('href'), t.attr('href') );
+			return false;
+		});
+	}
+});
 
 if ( history.pushState ) {
 	doc.ready( function(){
@@ -191,43 +209,25 @@ if ( history.pushState ) {
 				return data; 
 			},
 			
-			function changeRoom0( his, requestKey, requestUrl, room, nov ){
+			function changeRoom0( args ){
 				$("body").animate({ scrollTop: 0 }, 300);
-				this.house.children().css("opacity", "0.01").animate({opacity: 1}, 500);
-				//document.title = this.room.attr("data-title");
+
+				var ajok_data = this.house.children('.ajok_data');
+
+				var background = $('#_background');
+
+				if( ajok_data.data('back') )
+					background
+					.css('background-image', 'url('+ ajok_data.data('back') +')')
+					.css({ opacity: 0.9 })
+					.animate({ opacity: 1 }, 700 );
+				else
+					background.hide();
+
+				$('#menu a').removeClass('active').eq( ajok_data.data('menu') ).addClass('active');
 			}
 		);
 		aj.remember( 2, window.location.pathname.toString(), window.location.pathname.toString() );
-		aj.initi( window.location.pathname.toString(), aj.house.children(), undefined );
-		ajok.containers["#content"] = true;
-	});
-
-	doc.on('mousedown', 'a', function(e){
-		var t = $(this);
-	
-		if( 
-			t.attr("href") != undefined && 
-			t.attr("href")[0] == "/" &&
-			t.attr("j") == undefined
-		){
-			t
-			.attr("j", 1)
-			.on('click', function(e){
-				if( e.which != undefined && e.which != 1 ) return;
-				if( t.attr("href") ) aj.request( 1, t.attr('href'), t.attr('href') );
-				return false;
-			});
-		}
+		aj.initi( window.location.pathname.toString(), aj.house.children() );
 	});
 }
-
-window.addEventListener('popstate', function(event) {
-	if (
-		event.state != undefined && 
-		event.state.who != undefined
-	){
-		var a = ( event.state.i > ajok.state.i ) ? event.state : ajok.state;
-		
-		$( a.who ).data("container").request( 2, event.state[a.who] );
-	}
-});
