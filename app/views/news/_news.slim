@@ -1,0 +1,16 @@
+.news-item.cf
+  - if showing
+    a._button href=news_index_path Назад
+
+  .date= l(news_item.created_at, :format => '%e %B %Y')
+  
+  h2.marked= news_item.title
+
+  .images.cf
+    - news_item.images.limit( showing ? nil : 3 ).each do |image|
+      img src=image
+
+  p= ( showing ) ? news_item.body : news_item.preview
+
+  - if !showing
+    a._button._button_150 href=news_path( news_item ) читать

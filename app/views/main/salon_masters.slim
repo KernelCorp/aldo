@@ -1,0 +1,18 @@
+.ajok_data data={ back: '/images/background/common_bg.jpg' }
+
+.page
+  h1.grey Мастера Красоты
+
+  .marked Только настоящие профессионалы индустрии могут соответствовать уровню мастеров ALDO COPPOLA
+
+  div style="margin-bottom: 20px;"
+    a._button._button_150 href="/salon/interior" Интерьер
+
+  .page-content
+    - Master.all.each do |master|
+
+      ._master
+        img._col src='master.photo.url'
+        ._master_description._col
+          ._master_fio= master.fio
+          ._master_biography= simple_format( master.biography, {}, sanitize: false ) 

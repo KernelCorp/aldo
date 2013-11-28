@@ -1,0 +1,49 @@
+.marked{
+  color:#fff;
+  background: rgba( 76, 106, 117, 0.8 );
+  line-height: 1.3em;
+  margin: 20px 0px;
+}
+
+._button {
+  display: inline-block;
+  height: 20px;
+  padding-left: 20px;
+  font: 14px/20px 'PFBeauSansProBlackRegular', Arial, sans-serif;
+  color: white !important;
+  background: #8e8e8e;
+
+  &:hover {
+    color: black !important;
+    background: white;
+  }
+
+  padding-right: 20px;
+  &._button_150 {
+    min-width: 130px;
+    padding-right: 0px;
+  }
+}
+
+._button_list {
+  display: inline-block;
+
+  + ._button_list {
+    margin-left: 20px;
+  }
+
+  ._button {
+    display: table;
+
+    + ._button {
+      margin-top: 5px;
+    }
+  }
+}
+
+.page-content.semi-narrow.semi-transparent {
+  p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}

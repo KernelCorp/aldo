@@ -1,0 +1,16 @@
+.ajok_data data={ back: '/images/background/common_bg.jpg', menu: 6 }
+
+.page.center.cf
+  .gallery.two-space
+    .title-years
+      h1.grey Пресса <br> о нас
+
+    - Press.all.each do |press|
+    
+      a href=press.document.url
+        img src=press.image.url
+        img.fade src="/images/idle.png"
+        span.helper
+        span.descr
+          span.title=press.title
+          span.year=press.created_at.strftime('%_m/%Y')

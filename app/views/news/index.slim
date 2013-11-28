@@ -1,0 +1,29 @@
+.ajok_data data={ back: '/images/background/News.jpeg', menu: 0 }
+
+.page.left
+  h1 Новости
+  .page-content
+    = render template: 'news/index_line', locals: { offset: 0 }
+
+javascript:
+  (function(){
+    $('.page-content').on('mousedown', '#more', function(e){
+      var q = $(this);
+
+      if( !q.attr('href') ) return;
+
+      $.get(
+        q.attr('href'),
+        function( data ){
+          q.parent().remove();
+          $('.page-content').append( data );
+        }
+      );
+
+      q.removeAttr('href');
+
+      q.fadeOut(500, function(){ q.next().show(); });
+
+      return false;
+    });
+  })();

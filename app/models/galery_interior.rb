@@ -1,0 +1,2 @@
+class GaleryInterior < Galery
+end

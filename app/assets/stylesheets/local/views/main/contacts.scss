@@ -1,0 +1,4 @@
+.contacts .adr span + span:before {
+  content: ', ';
+  display: inline;
+}
