@@ -218,6 +218,7 @@ if ( history.pushState ) {
 
 				if( ajok_data.data('back') )
 					background
+					.show()
 					.css('background-image', 'url('+ ajok_data.data('back') +')')
 					.css({ opacity: 0.9 })
 					.animate({ opacity: 1 }, 700 );

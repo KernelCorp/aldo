@@ -1,0 +1,44 @@
+#yoxviewButtons {
+  .leftButton, .rightButton, .closeButton {
+    cursor: pointer;
+    position: fixed;
+    z-index: 1000;
+  }
+
+  .leftButton, .rightButton {
+    width: 50px;
+    height: 100%;
+    top: 0;
+    background: url(/images/sprite.png) no-repeat;
+  }
+
+  .leftButton {
+    left: 10px;
+    background-position: -235px 50%;
+
+    &:hover {
+      background-position: -309px 50%;
+    }
+  }
+
+  .rightButton { 
+    right: 10px; 
+    background-position: -475px 50%;
+
+    &:hover {
+      background-position: -400px 50%;
+    }
+  }
+
+  .closeButton {
+    height: 70px;
+    width: 75px;
+    right: 60;
+    top: 120px;
+    background: url(/images/sprite.png) no-repeat 24px -312px;
+
+    &:hover {
+      background-position: -51px -312px;
+    }
+  }
+}
