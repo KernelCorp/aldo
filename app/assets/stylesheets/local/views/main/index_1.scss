@@ -1,3 +1,7 @@
+.slide-wrapper .slide-date {
+  font-size: 19px;
+}
+
 .sliding-div {
   background-color: #acbbbd;
   background-position: 40% 50%;
@@ -30,5 +34,14 @@
   &.not_this_hovered {
     height: 102px;
     .slide-background { opacity: 0.5; }
+  }
+}
+.sliding-div {
+  .slide-content {
+    text-transform: none;
+  }
+
+  ._button {
+    margin-top: 20px;
   }
 }

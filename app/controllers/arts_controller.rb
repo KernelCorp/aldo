@@ -3,5 +3,7 @@ class ArtsController < ApplicationController
   end
 
   def show
+    gallery = GalleryArt.find params[:id]
+    render locals: { gallery: gallery }
   end
 end

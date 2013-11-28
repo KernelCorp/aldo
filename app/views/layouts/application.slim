@@ -1,12 +1,16 @@
 html
   head
-    title Aldo
+    title Aldo Coppola
+
     = stylesheet_link_tag    'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
 
+    = javascript_include_tag '/yoxview/yoxview-init.js'
+
   body
     #wrapper
+        
       #header
         a href='/' 
           img id="logo" src="/images/logo.jpg" alt="ALDO COPPOLA"
@@ -23,7 +27,7 @@ html
           ul
             li: a href="/news" Новости
             li: a href="/about" О компании
-            li: a href="/arts" Art
+            li: a href="/art" Art
             li: a href="/salon" Наш салон
             li: a href="/services" Услуги
             li: a href="/productions" Продукция
@@ -36,6 +40,11 @@ html
         = yield
 
       #_background
+
+      #yoxviewButtons
+        .leftButton
+        .rightButton
+        .closeButton
 
       #footer
         #footerLeft

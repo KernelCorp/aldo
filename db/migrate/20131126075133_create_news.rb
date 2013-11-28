@@ -4,8 +4,12 @@ class CreateNews < ActiveRecord::Migration
       t.string :title
       t.text :preview
       t.text :body
+      
+      t.string :slug
 
       t.timestamps
     end
+
+    add_index :news, :slug, unique: true
   end
 end

@@ -1,6 +1,6 @@
 .ajok_data data={ back: '/images/background/common_bg.jpg' }
 
-.page
+.page.center
   h1.grey Мастера Красоты
 
   .marked Только настоящие профессионалы индустрии могут соответствовать уровню мастеров ALDO COPPOLA
@@ -12,7 +12,7 @@
     - Master.all.each do |master|
 
       ._master
-        img._col src='master.photo.url'
+        img._col src=( master.photo ? master.photo.url : '' )
         ._master_description._col
           ._master_fio= master.fio
-          ._master_biography= simple_format( master.biography, {}, sanitize: false ) 
+          ._master_biography= simple_format( master.biography, {}, sanitize: false )
