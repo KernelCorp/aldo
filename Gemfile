@@ -5,7 +5,7 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '~> 0.3.11'
+gem 'mysql2', '0.3.11'
 gem "slim-rails", "~> 2.0.3"
 gem 'paperclip'
 
@@ -13,6 +13,7 @@ gem 'devise'
 gem 'cancan'
 gem 'activeadmin'
 gem 'russian'
+gem 'tinymce-rails', :git => 'https://github.com/spohlenz/tinymce-rails.git', :branch =>  'tinymce-4'
 
 gem "friendly_id", "~> 4.0.10"
 
