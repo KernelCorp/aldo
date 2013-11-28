@@ -12,7 +12,7 @@
     - Master.all.each do |master|
 
       ._master
-        img._col src=( master.photo ? master.photo.url : '' )
+        img._col src=master.photo.url(:art)
         ._master_description._col
           ._master_fio= master.fio
           ._master_biography= simple_format( master.biography, {}, sanitize: false )

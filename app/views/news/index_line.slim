@@ -1,4 +1,4 @@
-- news = News.limit( 10 ).offset( offset )
+- news = News.order('id DESC').limit( 10 ).offset( offset )
 
 = render partial: "news/news", :collection => news, :as => 'news_item', locals: { showing: false }
 

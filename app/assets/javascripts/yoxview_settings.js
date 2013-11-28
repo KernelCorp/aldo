@@ -1,5 +1,6 @@
 function yoxview_call( yox_container ){
-  yox_container.yoxview({
+  yox_container
+  .yoxview({
     renderButtons: false,
     renderMenu: false,
     autoHideInfo: false,
