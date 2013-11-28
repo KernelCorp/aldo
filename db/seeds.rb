@@ -1,11 +1,11 @@
-20.times do
-  News.create title: 'Example title', preview: 'Example preview', body: 'Example body'
+20.times do |i|
+  News.create title: "Example title #{i}", preview: "Example preview #{i}", body: "Example body #{i}"
 end
 
-3.times do
-  Master.create fio: 'Example fio', biography: 'Example biography'
+3.times do |i|
+  Master.create fio: "Example fio #{i}", biography: "Example biography #{i}"
 end
 
-3.times do
-  Slide.create title: 'Example title', content: 'Example content', href: '#'
+3.times do |i|
+  Slide.create title: "Example title #{i}", content: "Example content #{i}", href: '#'
 end

@@ -87,9 +87,12 @@ ActiveRecord::Schema.define(:version => 20131128100016) do
     t.string   "title"
     t.text     "preview"
     t.text     "body"
+    t.string   "slug"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "news", ["slug"], :name => "index_news_on_slug", :unique => true
 
   create_table "presses", :force => true do |t|
     t.string   "title"
