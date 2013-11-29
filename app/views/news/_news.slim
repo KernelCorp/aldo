@@ -8,7 +8,7 @@
 
   .images.cf.yoxview
     - news_item.images.limit( showing ? nil : 3 ).each do |image|
-      img src=image
+      img src=image.path.url(:news)
 
   p= ( showing ) ? news_item.body : news_item.preview
 

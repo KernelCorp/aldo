@@ -5,7 +5,7 @@
   .slide-title Новости
   .slide-wrapper
 
-    - News.limit(3).each_with_index do |news_item, i|
+    - News.order('id DESC').limit(3).each_with_index do |news_item, i|
       .col1
         .slide-date= l(news_item.created_at, :format => '%e %B %Y')
         .slide-content= news_item.title 
@@ -15,7 +15,7 @@
 
 - Slide.all.each do |slide|
 
-  .sliding-div style=( slide.background ? "background-image: url(#{slide.background.url});" : '' )
+  .sliding-div style="background-image: url(#{slide.background.url(:background)});"
     .slide-background
     .slide-title= slide.title
     .slide-wrapper
