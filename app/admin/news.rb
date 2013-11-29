@@ -1,5 +1,4 @@
 ActiveAdmin.register News do
-
   form do |f|
     f.inputs do
       f.input :title
@@ -12,4 +11,7 @@ ActiveAdmin.register News do
     f.actions
   end
 
+  show do
+    render partial: "show", locals: { news_item: news }
+  end
 end

@@ -624,6 +624,7 @@ a, a:visited, a:link {
       
   /* gallery */ 
   
+  /* 
   div.gallery {  }
   div.gallery.two-space { 
     
@@ -676,7 +677,6 @@ a, a:visited, a:link {
       background:#F00;
       vertical-align: middle;
       zoom: 1;
-      /*!*/
     }
     div.gallery > a span.descr { 
       position:relative;
@@ -703,7 +703,8 @@ a, a:visited, a:link {
         display:block;
         font-family:'PFBeauSansProBlackRegular',Arial,sans-serif;
         
-       }
+       } 
+  */
     
   /* buttons */  
   .button{

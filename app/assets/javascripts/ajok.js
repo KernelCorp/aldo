@@ -188,6 +188,7 @@ doc.on('mousedown', 'a', function(e){
 	if( 
 		t.attr("href") != undefined && 
 		t.attr("href")[0] == "/" &&
+		t.attr("target") == undefined &&
 		t.attr("j") == undefined
 	){
 		t

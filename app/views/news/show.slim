@@ -1,10 +1,19 @@
 .ajok_data data={ back: '/images/background/News.jpeg' }
 
-.page.left
+.page.center
   h1 Новости
   .page-content
     = render partial: "news/news", locals: { news_item: news_item, showing: true }
 
     .share-box
       .icons
+        .addthis_toolbox.addthis_default_style
+          a.addthis_button_facebook: span.at15t.at15t_facebook
+          a.addthis_button_vk: span.at15t.at15t_vk
+          a.addthis_button_odnoklassniki_ru: span.at15t.at15t_odnoklassniki_ru
+          a.addthis_button_twitter: span.at15t.at15t_twitter
+
       .button Поделиться
+
+    javascript:
+      addthis.toolbox('.addthis_toolbox');

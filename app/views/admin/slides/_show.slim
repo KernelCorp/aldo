@@ -1,0 +1,9 @@
+#content
+  .sliding-div style="background-image: url(#{slide.background.url(:background)});"
+    .slide-background
+    .slide-title= slide.title
+    .slide-wrapper
+      .slide-content= slide.content
+      a._button target='_blank' href=slide.href Перейти в раздел
+
+    .slide-shadow

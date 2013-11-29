@@ -46,3 +46,44 @@
     line-height: 20px;
   }
 }
+
+div.gallery {  
+  .gallery-title {
+    width: 477px;
+    float: left;
+  }
+
+  > a { 
+    width: 230px;
+    height: 230px;
+    display: inline-block;
+    margin: 7px 7px 0px 0;
+    position: relative;
+
+    .fade {
+      position: absolute; 
+      left: 0; 
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: none;
+      background: url(/images/bg_green_70.png);
+    }
+
+    &:hover {
+      .fade { 
+        display: block;
+      }
+    }
+
+    .descr {
+      margin: 7px;
+      font: 2.6em 'PFBeauSansProThinRegular',sans-serif;
+      color: white;
+
+      .year {
+        font-family:'PFBeauSansProBlackRegular',Arial,sans-serif;
+      }
+    }
+  }
+}
