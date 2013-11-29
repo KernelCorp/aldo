@@ -5,6 +5,7 @@ class Ability
 
     if user.is_a? AdminUser
       can :manage, :all
+      cannot [:destroy, :create], Gallery
     end
 
     # Define abilities for the passed in user here. For example:

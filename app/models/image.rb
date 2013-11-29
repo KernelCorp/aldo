@@ -3,6 +3,7 @@ class Image < ActiveRecord::Base
 
   has_attached_file :path,
                     styles: {
+                      thumbnail: '50x50#',
                       art: "230x230#", 
                       news: "247x247#"
                     },

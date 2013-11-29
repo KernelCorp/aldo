@@ -1,15 +1,14 @@
 .ajok_data data={ back: '/images/background/common_bg.jpg', menu: 2 }
 
 .page.center.cf
-  .gallery.two-space
-    .title-years
-      h1.grey Искусство красоты
+  .gallery
+    h1.gallery-title.grey Искусство красоты
 
-    - Gallery.find(1).images.order('id DESC').each do |image|
+    - Gallery.find_by_title('искусство красоты').images.order('id DESC').each do |image|
 
-      a href=image.path.url(nil, timestamp: false) j=1
+      a target='_blank' href=image.path.url(nil, timestamp: false)
         img src=image.path.url(:art)
-        img.fade src="/images/idle.png"
+        .fade
 
 coffee:
   yoxview_call( $('.gallery') )

@@ -1,11 +1,10 @@
-.ajok_data data={ back: '/images/background/common_bg.jpg', menu: 6 }
+#_background style="background-image: url(/images/background/common_bg.jpg); opacity: 1; display: block;"
 
-.page.center.cf
-  .gallery
-    h1.gallery-title.grey Пресса <br> о нас
+#content
+  .page.center.cf
+    .gallery
+      h1.gallery-title.grey Пресса <br> о нас
 
-    - Press.all.each do |press|
-    
       a target='_blank' href=press.document.url
         img src=press.image.url(:art)
         .fade

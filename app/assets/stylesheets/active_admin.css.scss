@@ -1,30 +1,43 @@
-// SASS variable overrides must be declared before loading up Active Admin's styles.
-//
-// To view the variables that Active Admin provides, take a look at
-// `app/assets/stylesheets/active_admin/mixins/_variables.css.scss` in the
-// Active Admin source.
-//
-// For example, to change the sidebar width:
-// $sidebar-width: 242px;
-
-// Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
 @import "admin_lib/*";
 
-// Overriding any non-variable SASS must be done after the fact.
-// For example, to change the default status-tag color:
-//
-//   body.active_admin {
-//      .status_tag { background: #6090DB; }
-//   }
-//
-// Notice that Active Admin CSS rules are nested within a
-// 'body.active_admin' selector to prevent conflicts with
-// other pages in the app. It is best to wrap your changes in a 
-// namespace so they are properly recognized. You have options
-// if you e.g. want different styles for different namespaces:
-//
-// .active_admin       applies to any Active Admin namespace
-// .admin_namespace    applies to the admin namespace (eg: /admin)
-// .other_namespace    applies to a custom namespace named other (eg: /other)
+@import
+'local/common/reset',
+'local/common/ie',
+'local/common/main',
+'local/common/main_1',
+'local/common/background',
+'local/views/main/index_0',
+'local/views/main/index_1',
+'local/views/news/news';
+
+body {
+  text-align: left;
+  font-size: 12px;
+}
+
+#header {
+  position: static;
+  height: 70px;
+  font-size: 15px;
+
+  li.current a, li:hover a {
+    color: #C41C2B !important;
+    background: none !important;
+  }
+}
+
+#main_content_wrapper {
+  padding-bottom: 60px;
+}
+
+#footer {
+  height: 35px;
+  padding: 0px;
+  text-align: center;
+}
+
+#content {
+  position: static;
+}

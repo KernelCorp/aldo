@@ -3,5 +3,5 @@ class Press < ActiveRecord::Base
   
   has_attached_file :document
 
-  has_attached_file :image, :styles => { :art => "230x230#" }
+  has_attached_file :image, :styles => { thumbnail: '50x50#', :art => "230x230#" }
 end

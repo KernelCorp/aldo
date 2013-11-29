@@ -1,5 +1,5 @@
 class Gallery < ActiveRecord::Base
-  attr_accessible :images_attributes
+  attr_accessible :title, :images_attributes
 
   has_and_belongs_to_many :images
 

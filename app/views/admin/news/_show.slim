@@ -1,0 +1,27 @@
+#_background style="background-image: url(/images/background/News.jpeg); opacity: 1; display: block;"
+
+#content
+  .page.center
+    .page-content
+
+      .news-item.cf
+        .date= l(news_item.created_at, :format => '%e %B %Y')
+        
+        h2.marked= news_item.title
+
+        .images.cf.yoxview
+          - news_item.images.limit( 3 ).each do |image|
+            img src=image.path.url(:news)
+
+        p= news_item.preview
+
+      .news-item.cf
+        .date= l(news_item.created_at, :format => '%e %B %Y')
+        
+        h2.marked= news_item.title
+
+        .images.cf.yoxview
+          - news_item.images.each do |image|
+            img src=image.path.url(:news)
+
+        p= news_item.body
