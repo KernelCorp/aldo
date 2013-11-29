@@ -7,8 +7,5 @@ class CreateGalleries < ActiveRecord::Migration
     end
 
     add_index :galleries, :title, unique: true
-
-    Gallery.create title: 'искусство красоты'
-    Gallery.create title: 'интерьер'
   end
 end
