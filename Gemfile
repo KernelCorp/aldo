@@ -9,6 +9,7 @@ gem 'mysql2', '0.3.11'
 gem "slim-rails", "~> 2.0.3"
 gem 'paperclip'
 
+
 gem 'devise'
 gem 'cancan'
 gem 'activeadmin'

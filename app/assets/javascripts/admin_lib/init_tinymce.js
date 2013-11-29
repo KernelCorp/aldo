@@ -1,6 +1,19 @@
 $(document).ready( function() {
+    if ($('textarea').length > 0) {
+        window.modal = ''
+        $.ajax({
+            type: 'get',
+            url: '/admin/images/get_modal',
+            success: function(response){
+               $('form').append(response)
+               window.modal = new(Modal);
+            }
+        })
+    }
+
     tinymce.init({
         selector: "textarea",
+        width: '76%',
         plugins: [
             "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",
@@ -13,12 +26,13 @@ $(document).ready( function() {
                 title : 'Insert Image',
                 image : 'http://lorempixel.com/100/100/cats',
                 onclick : function() {
-                    $('#modal').modal();
+                    modal.on_show( function(){
+                        create_modal_obj(ed);
+                    });
+                    modal.open();
                     ed.focus();
-                    ed.selection.setContent('<img style="display: inline" src="http://lorempixel.com/400/200/cats">');
                 }
             });
         }
-
     });
 });

@@ -10,6 +10,9 @@ ActiveAdmin.register Image do
     end
   end
 
+  collection_action :get_modal do
+    render partial: 'modal'
+  end
 
   controller do
     before_filter :parse_raw_upload, only: [:add_files]
