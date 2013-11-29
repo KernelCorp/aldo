@@ -30,6 +30,7 @@ body, html{
 	a.collection-image{
 		img{
 			margin: 5px;
+			cursor: pointer;
 		}
 		&.active{
 			img{

@@ -14,6 +14,7 @@ $(document).ready( function() {
     tinymce.init({
         selector: "textarea",
         width: '76%',
+        height: 500,
         plugins: [
             "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",

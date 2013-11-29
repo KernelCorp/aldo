@@ -12,8 +12,8 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
-textarea{
-	width: 76%;
+div.mce-container.mce-tinymce{
+	display: inline-block;
 }
 
 
