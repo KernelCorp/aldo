@@ -9,6 +9,7 @@
 
 // Active Admin's got SASS!
 //= require_tree ./admin_lib
+//= require admin_lib/modal
 @import "active_admin/mixins";
 @import "active_admin/base";
 

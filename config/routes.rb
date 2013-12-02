@@ -1,8 +1,12 @@
 Aldo::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  #ActiveAdmin::Editor::Engine(self)
+
+
 
   root to: 'main#index'
+
   get 'contacts', to: 'main#contacts'
   get 'about', to: 'main#about'
   get 'about/biography', to: 'main#about_biography'
