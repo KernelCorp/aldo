@@ -1,30 +1,47 @@
+.slide-wrapper .slide-date {
+  font-size: 19px;
+}
+
 .sliding-div {
   background-color: #acbbbd;
   background-position: 40% 50%;
   background-repeat: no-repeat;
 
-  transition: height 0.5s  ease;
+  .slide-background {
+    display: block;
+    visibility: visible;
+  }
 
+  transition: height 0.5s  ease;
   .slide-title {
-    transition: margin-top 0.5s  ease;
+    transition: margin-top 0.5s ease;
   }
   .slide-background, .slide-content, .slide-button {
     opacity: 0.01;
-    transition: opacity 0.5s  ease;
-  }
-  .slide-background {
-    display: block;
+    transition: opacity 0.5s ease;
   }
 
   &:hover {
     height: 390px;
     .slide-title { margin-top: 12px; }
     .slide-content, .slide-button { opacity: 1; }
+    .slide-background { 
+      transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+      visibility: hidden;
+    }
   }
 
   &.not_this_hovered {
     height: 102px;
-
     .slide-background { opacity: 0.5; }
+  }
+}
+.sliding-div {
+  .slide-content {
+    text-transform: none;
+  }
+
+  ._button {
+    margin-top: 20px;
   }
 }

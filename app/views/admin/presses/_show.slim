@@ -1,0 +1,13 @@
+#_background style="background-image: url(/images/background/common_bg.jpg); opacity: 1; display: block;"
+
+#content
+  .page.center.cf
+    .gallery
+      h1.gallery-title.grey Пресса <br> о нас
+
+      a target='_blank' href=press.document.url
+        img src=press.image.url(:art)
+        .fade
+          .descr
+            .title=press.title
+            .year=press.created_at.strftime('%_m/%Y')

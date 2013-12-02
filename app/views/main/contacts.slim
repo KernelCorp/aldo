@@ -1,3 +1,5 @@
+.ajok_data data={ back: '/images/background/common_bg.jpg' }
+
 div id='map'
 .page.center
   h1.grey Контактная информация
@@ -5,65 +7,25 @@ div id='map'
     .img
       img src="/images/contact_img.jpg" width="465" height="310"
     .info
-      .vcard
+      .vcard style='text-transform: none; font-size: 18px;'
         .fn.org Aldocoppola
         .adr
-          span.postal-code 121170
-          span.country-name Россия
-          span.locality Москва
-          span.street-address ул. Кульнева, д. 3Б
+          span.postal-code 630004
+          span.locality Новосибирск
+          span.street-address Комсомольский проезд, 15
 
-        ' Тел.: 
-        span.tel +7 (495) 646-58-79
-        br
-        ' e-mail: 
-        a class="email" href="mailto:office@aldocoppola.ru" office@aldocoppola.ru
-    
-      .left
-        p
-          strong Академия эстетики и стиля
-          br
-          ' Тел.: +7 (495) 646-58-79
-          br
-          ' e-mail: 
-          a href="mailto:school@aldocoppola.ru" school@aldocoppola.ru
-        br
-        p
-          strong Франчайзинг
-          br
-          ' Тел.: +7 (495) 748-91-36
-          br
-          ' e-mail: 
-          a href="mailto:franchising@aldocoppola.ru" franchising@aldocoppola.ru
-        br
-        p
-          strong Пресс-служба
-          br
-          ' e-mail: 
-          a href="mailto:pr@aldocoppola.ru" pr@aldocoppola.ru
+        div style='margin: 20px 0px;'
+          div style='width: 70px; display: inline-block; vertical-align: top;' тел.:
+          div style='display: inline-block;'
+            span.tel +7 (383) 291-65-01
+            br
+            span.tel +7 (383) 223-24-00
 
-      .right
-        p
-          strong Дистрибуция косметики
-          br
-          ' e-mail:
-          a href="mailto:cosmetics@aldocoppola.ru" cosmetics@aldocoppola.ru
-        br 
-        p
-          strong Подбор персонала
-          br 
-          ' Тел.: +7 (495) 646-58-79
-          br
-          ' e-mail: 
-          a href="mailto:job@aldocoppola.ru" job@aldocoppola.ru
-        br
-        p
-          strong Бренд менеджер
-          br
-          ' Тел.: +7 (495) 646-58-79
-          br
-          ' e-mail:
-          a href="mailto:a.mkrtycheva@aldocoppola.ru" a.mkrtycheva@aldocoppola.ru
+        div
+          div style='width: 70px; display: inline-block; vertical-align: top;' e-mail:
+          div style='display: inline-block;'
+            a class="email" href="mailto:info@aldo-coppola.ru" info@aldo-coppola.ru
+        
 
 javascript:
   function contactsGoogleMap(){
@@ -107,14 +69,8 @@ javascript:
   }
 
   (function(){
-    console.log( 1 );
-
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = 'https://maps.google.com/maps/api/js?sensor=false&callback=contactsGoogleMap';
     document.body.appendChild(script);
   })();
-
-- content_for :bottom_background
-  #backstretch style="left: 0px; top: 0px; position: fixed; overflow: hidden; z-index: -999999; margin: 0px; padding: 0px; height: 563px; width: 1903px;"
-    img src="/netcat_files/93/common_bg.jpg" style="position: absolute; margin: 0px; padding: 0px; border: none; z-index: -999999; max-width: none; width: 1903px; height: 1281.4814814814813px; left: 0px; top: -359.24074074074065px;"

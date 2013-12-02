@@ -1,0 +1,9 @@
+- news = News.order('id DESC').limit( 10 ).offset( offset )
+
+= render partial: "news/news", :collection => news, :as => 'news_item', locals: { showing: false }
+
+- unless news.size < 10
+  - if News.count > offset + 10
+    .more
+      a#more href="/news/offset/#{offset + 10}" Показать еще
+      img.loading src="/images/loading.gif" alt="Загрузка"

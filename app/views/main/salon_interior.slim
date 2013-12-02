@@ -1,0 +1,20 @@
+.ajok_data data={ back: '/images/background/common_bg.jpg' }
+
+.page.center
+  h1.grey Интерьер
+
+  .marked Атмосферу теплого радушного приема, соответствующего истинно итальянской душевности, гармонично дополняет оригинальный интерьер
+
+  div style="margin-bottom: 20px;"
+    a._button._button_150 href="/salon/masters" Мастера
+
+  .gallery
+
+    - Gallery.find_by_title('интерьер').images.each do |image|
+      
+      a target='_blank' href=image.path.url(nil, timestamp: false)
+        img src=image.path.url(:art)
+        .fade
+
+coffee:
+  yoxview_call( $('.gallery') )

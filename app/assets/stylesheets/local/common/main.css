@@ -593,6 +593,7 @@ a, a:visited, a:link {
     font-family:'PFBeauSansProThinRegular',sans-serif;
     line-height: 0.93;
   }
+  /*
   .marked span{
     display:inline-block;
     padding: 6px 7px;
@@ -618,10 +619,12 @@ a, a:visited, a:link {
   .marked span ~ span ~ span ~ span ~ span ~ span{
     z-index:1;
   }
+  */
   
       
   /* gallery */ 
   
+  /* 
   div.gallery {  }
   div.gallery.two-space { 
     
@@ -674,7 +677,6 @@ a, a:visited, a:link {
       background:#F00;
       vertical-align: middle;
       zoom: 1;
-      /*!*/
     }
     div.gallery > a span.descr { 
       position:relative;
@@ -701,7 +703,8 @@ a, a:visited, a:link {
         display:block;
         font-family:'PFBeauSansProBlackRegular',Arial,sans-serif;
         
-       }
+       } 
+  */
     
   /* buttons */  
   .button{

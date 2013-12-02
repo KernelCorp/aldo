@@ -1,0 +1,7 @@
+#_background style="background-image: url(/images/background/common_bg.jpg); opacity: 1; display: block;"
+
+.gallery
+  - gallery.images.each do |image|
+    a href=admin_image_path(image)
+      img src=image.path.url(:art)
+      .fade

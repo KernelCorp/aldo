@@ -1,0 +1,46 @@
+ru:
+  attributes:
+    id: Номер
+    slug: Ссылка
+    created_at: Создан
+    updated_at: Изменен
+
+  activerecord:
+    models:
+      gallery:
+        one: Галерея
+        few: Галереи
+        many: Галерей
+        other: Галереи
+      news:
+        one: Новость
+        few: Новости
+        many: Новостей
+        other: Новости
+      press:
+        one: Пресса
+        few: Пресса
+        many: Пресса
+        other: Пресса
+      slide:
+        one: Слайд
+        few: Слайда
+        many: Слайдов
+        other: Слайды
+
+    attributes:
+      gallery:
+        title: Название
+      news:
+        title: Заголовок
+        preview: Превью
+        body: Текст
+      press:
+        title: Название
+        image: Картинка
+        document: Документ
+      slide:
+        title: Заголовок
+        content: Текст 
+        href: Ссылка
+        background: Фон слайда
