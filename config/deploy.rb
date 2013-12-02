@@ -4,7 +4,7 @@ require 'bundler/capistrano' # Для работы bundler. При измене�
 
 
 set :application, "aldo"
-set :site_domain, "vote.kerweb.ru.ru"
+set :site_domain, "aldo.kerweb.ru.ru"
 set :rails_env, "production"
 set :domain, "mkonin@185.4.75.151"
 set :deploy_to, "/var/www/#{application}"
@@ -14,7 +14,7 @@ set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 set :normalize_asset_timestamps, false
 set :keep_releases, 5
 
-set :rvm_ruby_string, 'default'
+set :rvm_ruby_string, '2.0.0-p353'
 
 set :scm, :git
 set :repository,  "https://github.com/KernelCorp/vote.git"
