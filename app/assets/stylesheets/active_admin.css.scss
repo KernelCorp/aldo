@@ -56,3 +56,15 @@ body {
 #content {
   position: static;
 }
+
+.button {
+  &:before {
+    display: none;
+  }
+
+  height: auto;
+
+  &:hover {
+    color: white !important;
+  }
+}

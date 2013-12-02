@@ -1,3 +1,12 @@
+- content_for :meta
+  meta property="og:type" content="article"
+  meta property="og:title" content=news_item.title
+  meta property="og:description" content=news_item.preview
+  meta property="og:url" content=news_path( news_item )
+
+  - if news_item.images.count > 0
+    meta property="og:image" content=news_item.images.first.path.url(:art)
+
 .ajok_data data={ back: '/images/background/News.jpeg' }
 
 .page.center
