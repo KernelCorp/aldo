@@ -33,6 +33,16 @@ end
 
 gem 'jquery-rails', '< 3.0.0'
 
+# For deploy
+group :development do
+  gem 'capistrano'
+  gem 'rvm-capistrano'
+  gem 'nginx-config'
+end
+
+# Use unicorn as the app server
+gem 'unicorn', :platforms => :ruby
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
