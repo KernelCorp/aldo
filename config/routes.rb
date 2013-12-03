@@ -1,7 +1,9 @@
 Aldo::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  #ActiveAdmin::Editor::Engine(self)
+  mount ActiveAdminTinymce::Engine => "/", as: "admin_editor"
+
+
 
 
 

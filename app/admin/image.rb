@@ -16,7 +16,7 @@ ActiveAdmin.register Image do
 
   controller do
     before_filter :parse_raw_upload, only: [:add_files]
-
+    #helper ActiveAdmin::Editor::Engine.helpers
 
     def destroy
       @image = Image.find(params[:id])
