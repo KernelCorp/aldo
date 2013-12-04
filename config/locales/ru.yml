@@ -63,3 +63,6 @@ ru:
         fio: ФИО
         photo: Фото
         biography: Биография
+      image:
+        title: Название
+        preview: Предпросмотр
