@@ -31,7 +31,7 @@ group :assets do
 end
 
 gem 'jquery-rails', '< 3.0.0'
-gem 'active_admin_tinymce'
+gem 'active_admin_tinymce', git: 'https://github.com/KernelCorp/active_admin_tinymce', branch: 'master'
 
 # For deploy
 group :development do

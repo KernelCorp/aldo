@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/KernelCorp/active_admin_tinymce
+  revision: 2389132c5004dca8f8a624948633bd05d8912b16
+  branch: master
+  specs:
+    active_admin_tinymce (0.0.1)
+      rails (~> 3.2.13)
+
+GIT
   remote: https://github.com/spohlenz/tinymce-rails.git
   revision: 4a4d0ea551171c279eafe3002dff52a462a45b66
   branch: tinymce-4
@@ -22,8 +30,6 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active_admin_tinymce (0.0.1)
-      rails (~> 3.2.13)
     activeadmin (0.6.2)
       arbre (~> 1.0)
       bourbon (>= 1.0.0, < 4)
@@ -215,7 +221,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  active_admin_tinymce
+  active_admin_tinymce!
   activeadmin
   cancan
   capistrano
