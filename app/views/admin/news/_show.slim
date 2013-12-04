@@ -13,7 +13,7 @@
           - news_item.images.limit( 3 ).each do |image|
             img src=image.path.url(:news)
 
-        p= news_item.preview
+        div= raw( news_item.preview )
 
       .news-item.cf
         .date= l(news_item.created_at, :format => '%e %B %Y')
@@ -24,4 +24,4 @@
           - news_item.images.each do |image|
             img src=image.path.url(:news)
 
-        p= news_item.body
+        div= raw( news_item.body )

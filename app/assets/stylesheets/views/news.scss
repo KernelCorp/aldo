@@ -24,7 +24,7 @@
     text-transform: none;
 
     + p {
-      margin-top: 1.6em;
+      margin-top: 0.8em;
     }
   }
 
@@ -36,5 +36,9 @@
 
   + .more {
     margin-top: 40px;
+  }
+
+  p:empty, .images:empty {
+    display: none;
   }
 }

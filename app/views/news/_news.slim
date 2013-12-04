@@ -10,7 +10,7 @@
     - news_item.images.limit( showing ? nil : 3 ).each do |image|
       img src=image.path.url(:news)
 
-  p= ( showing ) ? news_item.body : news_item.preview
+  div= raw( ( showing ) ? news_item.body : news_item.preview )
 
   - if !showing
     a._button._button_150 href=news_path( news_item ) читать
