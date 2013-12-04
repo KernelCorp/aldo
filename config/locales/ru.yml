@@ -27,6 +27,11 @@ ru:
         few: Слайда
         many: Слайдов
         other: Слайды
+      master:
+        one: Мастер
+        few: Мастера
+        many: Мастеров
+        other: Мастера
 
     attributes:
       gallery:
@@ -44,3 +49,7 @@ ru:
         content: Текст 
         href: Ссылка
         background: Фон слайда
+      master:
+        fio: ФИО
+        photo: Фото
+        biography: Биография
