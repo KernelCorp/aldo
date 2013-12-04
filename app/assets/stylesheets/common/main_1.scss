@@ -1,4 +1,13 @@
-.marked{
+#wrapper{
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  
+  min-width: 960px;
+  width: 100%;
+}
+
+.marked {
   color:#fff;
   background: rgba( 76, 106, 117, 0.8 );
   line-height: 1.3em;
