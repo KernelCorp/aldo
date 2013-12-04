@@ -1,0 +1,9 @@
+#_background style="background-image: url(/images/background/common_bg.jpg); opacity: 1; display: block;"
+
+.page.center
+  .page-content
+    ._master
+      img._col src=master.photo.url(:art)
+      ._master_description._col
+        ._master_fio= master.fio
+        ._master_biography= raw master.biography

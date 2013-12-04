@@ -16,4 +16,8 @@ ActiveAdmin.register Master do
     f.actions
   end
 
+  show do
+    render partial: 'show', locals: { master: master }
+  end
+
 end

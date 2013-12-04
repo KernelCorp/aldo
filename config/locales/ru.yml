@@ -7,6 +7,16 @@ ru:
 
   activerecord:
     models:
+      admin_user:
+        one: Администратор
+        few: Администратора
+        many: Администраторов
+        other: Администраторы
+      image:
+        one: Картинка
+        few: Картинки
+        many: Картинок
+        other: Картинки
       gallery:
         one: Галерея
         few: Галереи

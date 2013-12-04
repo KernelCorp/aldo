@@ -1,7 +1,6 @@
 ActiveAdmin.register Slide do
   index do
     column :title
-    column :content
     column :href
     default_actions
   end
