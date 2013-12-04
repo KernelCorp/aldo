@@ -5,7 +5,7 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '0.3.11'
+gem 'mysql2', '>= 0.3.11'
 gem "slim-rails", "~> 2.0.3"
 gem 'paperclip'
 
@@ -32,6 +32,16 @@ end
 
 gem 'jquery-rails', '< 3.0.0'
 gem 'active_admin_tinymce'
+
+# For deploy
+group :development do
+  gem 'capistrano'
+  gem 'rvm-capistrano'
+  gem 'nginx-config'
+end
+
+# Use unicorn as the app server
+gem 'unicorn', :platforms => :ruby
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
