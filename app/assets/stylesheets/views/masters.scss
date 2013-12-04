@@ -7,10 +7,12 @@
   }
 
   ._master_description {
+    width: 640px;
     margin-left: 10px;
     padding-top: 5px;
     text-transform: none;
     color: rgb( 98,108,108 );
+    word-wrap: break-word;
   }
 
   ._master_fio {
