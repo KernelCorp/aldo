@@ -1,17 +1,13 @@
 @import
 'global/col',
 
-'local/common/reset',
-'local/common/main',
-'local/common/ie',
+'common/reset',
+'common/main',
+'common/ie',
 
-'local/common/main_1',
-'local/common/background',
-'local/common/yoxview_button',
+'common/main_1',
+'common/background',
+'common/yoxview_button',
 
-'local/views/main/index_0',
-'local/views/main/index_1',
-'local/views/main/contacts',
-'local/views/productions/index',
-'local/views/news/news',
-'local/views/masters';
+'views/main/*',
+'views/*';

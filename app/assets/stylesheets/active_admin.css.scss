@@ -19,14 +19,14 @@ div.mce-container.mce-tinymce{
 
 
 @import
-'local/common/reset',
-'local/common/ie',
-'local/common/main',
-'local/common/main_1',
-'local/common/background',
-'local/views/main/index_0',
-'local/views/main/index_1',
-'local/views/news/news';
+'common/reset',
+'common/ie',
+'common/main',
+'common/main_1',
+'common/background',
+
+'views/main/*',
+'views/*';
 
 body {
   text-align: left;
