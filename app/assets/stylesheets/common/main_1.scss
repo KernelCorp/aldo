@@ -1,11 +1,26 @@
-#wrapper{
+html, body {
   min-height: 100%;
-  height: auto !important;
   height: 100%;
-  
-  min-width: 960px;
-  width: 100%;
 }
+
+#wrapper {
+  min-height: 100%;
+  min-width: 960px;
+  position: relative;
+}
+
+#content {
+  padding: 120px 0px 45px;
+}
+
+#header, #footer {
+  position: absolute;
+}
+
+.page-content {
+  margin-bottom: 45px;
+}
+
 
 .marked {
   color:#fff;
