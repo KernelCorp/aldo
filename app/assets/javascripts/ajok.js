@@ -1,235 +1,219 @@
-var doc = $(document);
-
-var ajok = 
-{
-	i : 1,
-	state: { i : 0 },
-	containers: {}
-};
-
 jQuery.fn.extend({
   ajok_attach: function( fun ) {
-    return this.each(function() {
-    	$(this).on('ajok:attach', function(e){
-    		if( e.target == this ) fun();
-    	});
+    return this.on('ajok:attach', function(e){
+      if( e.target == this ) fun();
     });
   },
   ajok_detach: function( fun ) {
-    return this.each(function() {
-    	$(this).on('ajok:detach', function(e){
-    		if( e.target == this ) fun();
-    	});
+    return this.on('ajok:detach', function(e){
+      if( e.target == this ) fun();
     });
   }
 });
 
-function history_container( selector, request0 ){
-	if( ! history.pushState ) return false;
+var ajok = 
+{
+  i : 1,
+  state: { i : 0 },
+  containers: {}
+};
 
-	var house = $( selector );
-	
-	if( house.data("container") ){
-		log( selector + " container two times" );
-		return false;
-	}
-	
-	var hc =
-	{
-		key: "",
-		house: house,
-		
-		request: function( position, key, url ) {
-			if( key == this.key ) return;
-		
-			request0.call( this, position, key, url );
-		},
-		
-		remember: function( position, key, url ){
-			this.key = key;
-			ajok.containers[ selector ] = true;
-	
-			if( position != 'old_cache' ){
-				var state = 
-				{ 
-					who : selector,
-					i : ( position == 'new' ) ? ajok.i++ : ajok.state.i
-				};
-				
-				for( c in ajok.containers )
-					if( ajok.containers[ c ] )
-						state[ c ] = $( c ).data("container").key;
-				
-				if( position == 'new' ) history.pushState( state, document.title, url);
-				else
-				if( position == 'old' ) history.replaceState( state, document.title, url);
-			}
-			
-			ajok.state = history.state;
-		},
+History_Container = function( selector ){
+  var house = $( selector );
+  if( house.data('container') ){
+    log( selector + ' container two times' );
+  } else {
+    house.data('container', this);
+  }
 
-		forget: function(){
-			ajok.containers[ selector ] = false;
-		}
-	}
-	
-	house.data({ container : hc });
-	
-	return hc;
+  this.selector = selector;
+  this.house = house;
 }
 
-function ajok_container( selector, rabota, changeRoom0 ){
+History_Container.prototype = 
+  {
+    key: '',
+    
+    request: function( position, key, url ) {
+      if( key == this.key ) return;
 
-	var ac = history_container(
-		selector,
-		
-		function request0( position, key, url ) {
-			
-			if( this.cache[ key ] )
-			{
-				changeRoom.call(
-					this,
-					( position == 'old' ) ? 'old_cache' : position, 
-					key,
-					url,
-					this.cache[ key ], 
-					true
-				);
-			}
-			else 
-			{
-				var thos = this;
-				$.get(
-					key,
-					function( data ){
-						changeRoom.call(
-							thos,
-							position, 
-							key,
-							url,
-							rabota.call( thos, data ),
-							false 
-						);
-					}
-				);
-			}
-		}
-	);
+      this._request( position, key, url );
+    },
+    
+    remember: function( position, key, url ){
+      this.key = key;
+      ajok.containers[ this.selector ] = true;
 
-	ac.reload = function(){
-		var thos = this;
-		$.get(
-			thos.key,
-			function( data ){
-				changeRoom.call(
-					thos,
-					'old_cache', 
-					thos.key,
-					'',
-					rabota.call( thos, data ),
-					false 
-				);
-			}
-		);
-	};
-	
-	ac.initi = function( key, room ){
-		ac.key = key;
-		ac.room = room.trigger("ajok:attach");
-		ac.cache[ key ] = room;
+      if( position != 'old_cache' ){
+        var state = 
+        { 
+          who : this.selector,
+          i : ( position == 'new' ) ? ajok.i++ : ajok.state.i
+        };
+        
+        for( c in ajok.containers )
+          if( ajok.containers[ c ] != undefined )
+            state[ c ] = $( c ).data('container').key;
+        
+        if( position == 'new' ) history.pushState( state, document.title, url);
+        else
+        if( position == 'old' ) history.replaceState( state, document.title, url);
+      }
+      
+      ajok.state = history.state;
+    },
 
-		changeRoom0.call( this );
-		
-		var state = ( history.state ) ? history.state : {};
-		state[ selector ] = key;
-		history.replaceState( state, document.title );
-	};
-	
-	ac.cache = {};
-	ac.room = {};
+    forget: function(){
+      ajok.containers[ this.selector ] = undefined;
+    }
+  };
 
-	function changeRoom( position, key, url, room, cache ){
-		this.room.trigger("ajok:detach");
-		this.room.detach();
-		
-		this.room = $( room );
+Ajok_Container = function( selector, key, room ){
+  History_Container.call(this, selector);
 
-		this.room.appendTo( this.house );
-		this.room.trigger("ajok:attach");
-		
-		changeRoom0.call( this, { position: position, key: key, url: url, room: room, cache: cache } );
-		
-		this.remember( position, key, url );
-		
-		if( !cache ) this.cache[ key ] = this.room;
-	}
-	
-	return ac;
+  this.key = key;
+  this.room = room.trigger('ajok:attach');
+  this.cache[ key ] = room;
+
+  this._changeRoom();
+  
+  var state = ( history.state ) ? history.state : {};
+  state[ selector ] = key;
+  history.replaceState( state, document.title );
 }
+
+Ajok_Container.prototype = 
+  $.extend({}, History_Container.prototype,
+  {
+    cache: {},
+    room: {},
+
+    _request: function( position, key, url ) {
+      if( this.cache[ key ] )
+      {
+        this.changeRoom(
+          ( position == 'old' ) ? 'old_cache' : position, 
+          key,
+          url,
+          this.cache[ key ], 
+          false
+        );
+      }
+      else 
+      {
+        var thos = this;
+        $.get(
+          key,
+          function( data ){
+            thos.changeRoom(
+              position, 
+              key,
+              url,
+              thos._build( data ),
+              true 
+            );
+          },
+          'html'
+        );
+      }
+    },
+
+    reload: function(){
+      var thos = this;
+      $.get(
+        thos.key,
+        function( data ){
+          this.changeRoom(
+            'old_cache', 
+            thos.key,
+            '',
+            thos._build( data ),
+            true 
+          );
+        },
+        'html'
+      );
+    },
+
+    changeRoom: function( position, key, url, room, for_cache ){
+      this.room.trigger('ajok:detach');
+      this.room.detach();
+      
+      this.room = $( room );
+
+      this.room.appendTo( this.house );
+      this.room.trigger('ajok:attach');
+      
+      this._changeRoom({ position: position, key: key, url: url, room: room, for_cache: for_cache });
+      
+      this.remember( position, key, url );
+      
+      if( for_cache ) this.cache[ key ] = this.room;
+    }
+  });
 
 window.addEventListener('popstate', function(event) {
-	if (
-		event.state != undefined && 
-		event.state.who != undefined
-	){
-		var who = ( event.state.i > ajok.state.i ) ? event.state.who : ajok.state.who;
-		
-		$( who ).data("container").request( 'old', event.state[who] );
-	}
+  if ( !event.state || !event.state.who ) return;
+  var who = ( event.state.i > ajok.state.i ) ? event.state.who : ajok.state.who;
+  $( who ).data('container').request( 'old', event.state[who] );
 });
 
-// local
-
-var aj = {};
-
-doc.on('mousedown', 'a', function(e){
-	var t = $(this);
-
-	if( 
-		t.attr("href") != undefined && 
-		t.attr("href")[0] == "/" &&
-		t.attr("target") == undefined &&
-		t.attr("j") == undefined
-	){
-		t
-		.attr("j", 1)
-		.on('click', function(e){
-			if( e.which != undefined && e.which != 1 ) return;
-			if( t.attr("href") ) aj.request( 'new', t.attr('href'), t.attr('href') );
-			return false;
-		});
-	}
-});
+//local
 
 if ( history.pushState ) {
-	doc.ready( function(){
-		aj = ajok_container(
-			"#content",
-			
-			function rabota( data ){ 
-				return data; 
-			},
-			
-			function changeRoom0( args ){
-				$("body").animate({ scrollTop: 0 }, 300);
+  var aj, AJ = function( selector, key, room ){
+    Ajok_Container.call( this, selector, key, room );
 
-				var ajok_data = this.house.children('.ajok_data');
+    this.remember( 'old', window.location.pathname.toString(), window.location.pathname.toString() );
+  }
 
-				var background = $('#_background');
+  AJ.prototype = 
+    $.extend({}, Ajok_Container.prototype, {
+      _build: function( data ){
+        return $(data).find( this.selector ).children();
+      },
 
-				if( ajok_data.data('back') )
-					background
-					.show()
-					.css('background-image', 'url('+ ajok_data.data('back') +')')
-					.css({ opacity: 0.9 })
-					.animate({ opacity: 1 }, 700 );
-				else
-					background.hide();
+      _changeRoom: function( args ){
+        var ajok_data = this.house.children('.ajok_data');
 
-				$('#menu a').removeClass('active').eq( ajok_data.data('menu') ).addClass('active');
-			}
-		);
-		aj.remember( 2, window.location.pathname.toString(), window.location.pathname.toString() );
-		aj.initi( window.location.pathname.toString(), aj.house.children() );
-	});
+        $("body").animate({ scrollTop: 0 }, 300);
+
+        var current_url = args ? args.url : window.location.pathname.toString();
+
+        var background = $('#_background');
+
+        if( ajok_data.data('back') )
+          background
+          .show()
+          .css('background-image', 'url('+ ajok_data.data('back') +')')
+          .css({ opacity: 0.9 })
+          .animate({ opacity: 1 }, 700 );
+        else
+          background.hide();
+
+        if( ajok_data.data('menu') ){
+          $('#menu a').removeClass('active').eq( ajok_data.data('menu') ).addClass('active');
+        } else {
+          $('#menu a').removeClass('active').filter('[href="'+current_url+'"]').addClass('active');
+        }
+      }
+    });
+
+  $(function(){
+    aj = new AJ( '#content', window.location.pathname.toString(), $('#ajok_house').children() );
+  });
+
+  $(document).on('mousedown', 'a[href^="/"]', function(e){
+    var t = $(this);
+
+    if( !t.attr('target') && !t.data('remote') ){
+      t
+      .attr('target', '_self')
+      .on('click', function(e){
+        if( e.which && e.which != 1 ) return;
+        if( t.attr('href') ) aj.request( 'new', t.attr('href'), t.attr('href') );
+        return false;
+      });
+    }
+  });
 }

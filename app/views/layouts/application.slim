@@ -2,6 +2,7 @@ doctype html
 html
   head
     title Aldo Coppola
+    
 
     = stylesheet_link_tag    'application'
     = javascript_include_tag 'application'
@@ -11,10 +12,9 @@ html
     = javascript_include_tag 'http://s7.addthis.com/js/250/addthis_widget.js'
 
     meta property='og:site_name' content='ALDO COPPOLA'
-    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+    meta http-equiv='Content-Type' content='text/html; charset=utf-8'
 
-    - if content_for? :meta
-      = content_for :meta
+    = content_for :meta
 
   body
     #wrapper
@@ -26,20 +26,21 @@ html
         #contacts
           ul
             li.last style='float: right;'
-              a href="/contacts" Контактная информация
+              a href='/contacts' Контактная информация
 
-          a.phone href="tel:+73832916501" +7 (383) 291-65-01
-          a.phone href="tel:+73832232400" +7 (383) 223-24-00
+          a.phone href='tel:+73832916501' +7 (383) 291-65-01
+          a.phone href='tel:+73832232400' +7 (383) 223-24-00
 
         #menu
           ul
-            li: a href="/news" Новости
-            li: a href="/about" О компании
-            li: a href="/art" Art
-            li: a href="/salon" Наш салон
-            li: a href="/services" Услуги
-            li: a href="/productions" Продукция
-            li: a href="/press" Пресса о нас
+            li: a href='/news' Новости
+            li: a href='/about' О компании
+            li: a href='/art' Art
+            li: a href='/salon' Наш салон
+            li: a href='/services' Услуги
+            li: a href='/productions' Продукция
+            li: a href='/press' Пресса о нас
+            li: a href='/appointment' Запись на прием
 
         .header-shadow
 
@@ -54,16 +55,17 @@ html
 
       #footer
         #footerLeft
-          a href="http://www.aldocoppola.ru/": img class="ico-footer" src="/images/idle.png"
-          '  © 1994 - 2013
-          | «<a href="http://www.aldocoppola.ru">ALDO COPPOLA</a>» .
-          | <a href="http://optimabeauty.ru/" target="_blank">OPTIMA BEAUTY</a>
+          a href='http://www.aldocoppola.ru/': img class='ico-footer' src='/images/idle.png'
+          '  © 1994 - 
+          =' Time.now.year
+          | «<a target='_blank' href='http://www.aldocoppola.ru'>ALDO COPPOLA</a>» .
+          a target='_blank' href='http://optimabeauty.ru/' OPTIMA BEAUTY
 
         #footerRight
-          a href="http://www.facebook.com/aldocoppola.ru" target="_blank": .link_facebook
-          a href="http://www.youtube.com/user/CoppolaAldo/" target="_blank": .link_youtube
-          a href="/contacts/" Контакты
+          a target='_blank' href='http://www.facebook.com/aldocoppola.ru': .link_facebook
+          a target='_blank' href='http://www.youtube.com/user/CoppolaAldo/': .link_youtube
+          a href='/contacts/' Контакты
           '  . 
-          a href="http://kerweb.ru" Разработка сайта
+          a href='http://kerweb.ru' Разработка сайта
 
         .footer-shadow
