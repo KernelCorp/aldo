@@ -26,4 +26,6 @@ Aldo::Application.routes.draw do
   
   resources :productions, only: [:index, :show]
   resources :services, only: [:index, :show]
+
+  get 'appointment', to: 'appointments#new'
 end

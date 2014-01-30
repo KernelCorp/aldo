@@ -191,7 +191,7 @@ if ( history.pushState ) {
         else
           background.hide();
 
-        if( ajok_data.data('menu') )
+        if( ajok_data.data('menu') != undefined )
           $('#menu a').removeClass('active').eq( ajok_data.data('menu') ).addClass('active');
         else
           $('#menu a').removeClass('active').filter('[href="'+current_url+'"]').addClass('active');
