@@ -7,10 +7,12 @@ ru:
     email: E-mail
     phone: Телефон
     fio: ФИО
+    full_name: ФИО
     photo: Фото
     title: Заголовок
     name: Имя
     description: Описание
+    preview: Превью
 
   activerecord:
     models:
@@ -64,7 +66,6 @@ ru:
       gallery:
         title: Название
       news:
-        preview: Превью
         body: Текст
       press:
         title: Название
