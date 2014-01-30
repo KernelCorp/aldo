@@ -83,4 +83,10 @@ ru:
         path: Файл изображения
       service:
         name: Название
+      appointment:
+        master: Мастер
+        service: Услуга
 
+  formtastic:
+    create: "Создать %{model}"
+    update: "Изменить"
