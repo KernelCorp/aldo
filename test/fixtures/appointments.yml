@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  service: 
+  master: 
+  fio: MyString
+  phone: MyString
+  email: MyString
+
+two:
+  service: 
+  master: 
+  fio: MyString
+  phone: MyString
+  email: MyString

@@ -4,6 +4,7 @@ ru:
     slug: Ссылка
     created_at: Создан
     updated_at: Изменен
+    email: E-mail
 
   activerecord:
     models:
@@ -42,6 +43,11 @@ ru:
         few: Мастера
         many: Мастеров
         other: Мастера
+      service:
+        one: Услуга
+        few: Услуги
+        many: Услуг
+        other: Услуги
 
     attributes:
       gallery:
@@ -67,3 +73,6 @@ ru:
         title: Название
         preview: Предпросмотр
         path: Файл изображения
+      service:
+        name: Название
+        description: Описание

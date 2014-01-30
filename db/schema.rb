@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131204085029) do
+ActiveRecord::Schema.define(:version => 20140130081103) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(:version => 20131204085029) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "appointments", :force => true do |t|
+    t.integer  "service_id"
+    t.integer  "master_id"
+    t.string   "fio"
+    t.string   "phone"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "appointments", ["master_id"], :name => "index_appointments_on_master_id"
+  add_index "appointments", ["service_id"], :name => "index_appointments_on_service_id"
 
   create_table "galleries", :force => true do |t|
     t.string "title"
@@ -86,6 +99,13 @@ ActiveRecord::Schema.define(:version => 20131204085029) do
     t.datetime "photo_updated_at"
   end
 
+  create_table "masters_services", :id => false, :force => true do |t|
+    t.integer "master_id"
+    t.integer "service_id"
+  end
+
+  add_index "masters_services", ["master_id", "service_id"], :name => "index_masters_services_on_master_id_and_service_id"
+
   create_table "news", :force => true do |t|
     t.string   "title"
     t.text     "preview"
@@ -109,6 +129,13 @@ ActiveRecord::Schema.define(:version => 20131204085029) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "services", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "slides", :force => true do |t|
