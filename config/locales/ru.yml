@@ -5,6 +5,12 @@ ru:
     created_at: Создан
     updated_at: Изменен
     email: E-mail
+    phone: Телефон
+    fio: ФИО
+    photo: Фото
+    title: Заголовок
+    name: Имя
+    description: Описание
 
   activerecord:
     models:
@@ -48,12 +54,16 @@ ru:
         few: Услуги
         many: Услуг
         other: Услуги
+      appointment:
+        one: Заявка
+        few: Заявки
+        many: Заявок
+        other: Заявки
 
     attributes:
       gallery:
         title: Название
       news:
-        title: Заголовок
         preview: Превью
         body: Текст
       press:
@@ -61,13 +71,10 @@ ru:
         image: Картинка
         document: Документ
       slide:
-        title: Заголовок
         content: Текст 
         href: Ссылка
         background: Фон слайда
       master:
-        fio: ФИО
-        photo: Фото
         biography: Биография
       image:
         title: Название
@@ -75,4 +82,4 @@ ru:
         path: Файл изображения
       service:
         name: Название
-        description: Описание
+
