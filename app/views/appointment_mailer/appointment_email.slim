@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    meta content='text/html; charset=UTF-8' http-equiv='Content-Type'
+  
+  body
+    h1 Заявка с сайта
+
+    p
+      b Услуга:
+      =' @appointment.service.name
+    
+    - if @appointment.master
+      p
+        b Мастер:
+        =' @appointment.master.fio
+
+    p
+      b ФИО:
+      =' @appointment.fio
+
+    p
+      b Телефон:
+      =' @appointment.phone
+
+    - if @appointment.email
+      p
+        b Email:
+        =' @appointment.email
