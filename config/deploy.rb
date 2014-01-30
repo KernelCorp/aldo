@@ -17,7 +17,7 @@ set :keep_releases, 5
 set :rvm_ruby_string, '2.0.0-p353'
 
 set :scm, :git
-set :repository,  "https://github.com/KernelCorp/vote.git"
+set :repository,  "https://github.com/KernelCorp/aldo.git"
 set :branch, "master" # Ветка из которой будем тянуть код для деплоя.
 set :deploy_via, :remote_cache # Указание на то, что стоит хранить кеш репозитария локально и с каждым деплоем лишь подтягивать произведенные изменения. Очень актуально для больших и тяжелых репозитариев.
 
@@ -51,6 +51,6 @@ namespace :deploy do
   end
 
   task :init_vhost do
-    run "ln -s #{deploy_to}/current/config/vote.vhost /etc/nginx/sites-enabled/#{application}"
+    run "ln -s #{deploy_to}/current/config/#{application}.vhost /etc/nginx/sites-enabled/#{application}"
   end
 end

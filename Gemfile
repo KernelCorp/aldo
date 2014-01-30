@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '~>3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -14,7 +14,6 @@ gem 'devise'
 gem 'cancan'
 gem 'activeadmin'
 gem 'russian'
-gem 'tinymce-rails', :git => 'https://github.com/spohlenz/tinymce-rails.git', :branch =>  'tinymce-4'
 
 gem "friendly_id", "~> 4.0.10"
 
@@ -31,7 +30,7 @@ group :assets do
 end
 
 gem 'jquery-rails', '< 3.0.0'
-gem 'active_admin_tinymce', git: 'https://github.com/KernelCorp/active_admin_tinymce', branch: 'master'
+gem 'activeadmin_tinymce'
 
 # For deploy
 group :development do
