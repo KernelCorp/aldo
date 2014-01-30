@@ -191,16 +191,15 @@ if ( history.pushState ) {
         else
           background.hide();
 
-        if( ajok_data.data('menu') ){
+        if( ajok_data.data('menu') )
           $('#menu a').removeClass('active').eq( ajok_data.data('menu') ).addClass('active');
-        } else {
+        else
           $('#menu a').removeClass('active').filter('[href="'+current_url+'"]').addClass('active');
-        }
       }
     });
 
   $(function(){
-    aj = new AJ( '#content', window.location.pathname.toString(), $('#ajok_house').children() );
+    aj = new AJ( '#content', window.location.pathname.toString(), $('#content').children() );
   });
 
   $(document).on('mousedown', 'a[href^="/"]', function(e){
