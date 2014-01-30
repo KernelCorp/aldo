@@ -218,7 +218,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   friendly_id (~> 4.0.10)
-  jquery-rails (< 3.0.0)
+  jquery-rails
   mysql2 (>= 0.3.11)
   nginx-config
   paperclip
