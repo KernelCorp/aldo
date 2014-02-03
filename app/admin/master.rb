@@ -12,6 +12,8 @@ ActiveAdmin.register Master do
       f.input :fio
       f.input :biography
       f.input :photo, as: :file
+
+      f.input :services, as: :check_boxes, collection: Service.all
     end
     f.actions
   end

@@ -15,7 +15,9 @@ gem 'cancan'
 gem 'activeadmin'
 gem 'russian'
 
-gem "friendly_id", "~> 4.0.10"
+gem 'simple_form'
+
+gem 'friendly_id', '~> 4.0.10'
 
 # Gems used only for assets and not required
 # in production environments by default.

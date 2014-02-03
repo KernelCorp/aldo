@@ -1002,35 +1002,7 @@ a, a:visited, a:link {
       width:250px;
     }
     
-  /* form */
-  #content form{}
-  
-  
-  #content form .left-column{ width:316px; float:left;}
-    #content form .left-column label{ width:100%; }
-  
-  #content form .right-column{ margin-left:335px; width:366px;}
-    #content form .right-column label{ width:100%;}
-    #content form .right-column textarea {min-height:64px;}
-    
-    #content form label{float:left; font-size:1.4em;}
-    #content form input, 
-    #content form textarea{display:inline-block; *zoom:1; padding:1px; margin-bottom:4px; font-size:0.78em; border:none; background:#fff; font-family:inherit; text-transform:uppercase; float:right;*margin-top:-18px; width:224px;}
-    #content form input.error {color:#ea1b2f;}
-    #content form label .star {color:#ea1b2f;}
-    #content form label.error {color:#ea1b2f;}
-    
-    #content form .left-column input.agree {float:left; margin-left:0; width:auto;*margin-top:0px;}
-    #content form .left-column label.agree {margin-left:5px; margin-top:3px; display:block; width:90%; font-size:1em;}
-    
-    #content form .button.submit { float:right; width:auto; }
-    #content form .button.submit input { background:none; border:none; color:#fff; margin:0; width:auto; font-size:1em;line-height:14px; padding:0; height:18px; text-transform:uppercase; cursor: pointer; }
-    #content form .button.submit_protector { color:#ccc !important; cursor: default; background:#999 !important; }
-    #content form .button.submit_protector::before, #content form  .button.submit_protector .before { color:#ccc !important; cursor: default; background: url(/images/sprite.png) no-repeat -20px 0 !important; }
-    #content form .button.submit_protector input { color:#ccc !important; cursor: default; }
-    #content form .button.submit_protector:hover { background:#999 !important; color:#ccc !important; }
-    
-    
+  /* form i deleted it*/
     
 /* month */ 
 #content .top-actions{

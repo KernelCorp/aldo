@@ -1,0 +1,38 @@
+input {
+  &[type='radio'], &[type='checkbox'] {
+    display: none;
+  }
+}
+
+.radiocheck {
+  display: inline-block;
+  vertical-align: baseline;
+
+  height: 1em;
+  width: 1em;
+  line-height: 1em;
+
+  border: $element_border;
+
+  background: $element_background;
+  text-align: center;
+
+  cursor: pointer;
+
+  &:before{
+    display: inline;
+    content: "\00a0";
+  }
+  
+  :checked + &:before {
+    content: "\2714";
+  }
+
+  [type='radio'] + & {
+    border-radius: 50%;
+  }
+
+  [type='checkbox'] + & {
+    border-radius: $element_radius;
+  }
+}

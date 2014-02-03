@@ -16,3 +16,4 @@
         ._master_description._col
           ._master_fio= master.fio
           ._master_biography= simple_format( master.biography, {}, sanitize: false )
+          = link_to 'Записаться', appointment_path( m: master.id ), class: '_button _get_it'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140130081103) do
+ActiveRecord::Schema.define(:version => 20140203075109) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -133,10 +133,17 @@ ActiveRecord::Schema.define(:version => 20140130081103) do
 
   create_table "services", :force => true do |t|
     t.string   "name"
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.text     "description"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
+    t.string   "slug"
   end
+
+  add_index "services", ["slug"], :name => "index_services_on_slug", :unique => true
 
   create_table "slides", :force => true do |t|
     t.string   "title"

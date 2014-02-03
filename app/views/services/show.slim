@@ -1,0 +1,15 @@
+.ajok_data data={ back: @service.background.url }
+
+.page.service
+  h1 Услуги
+  .marked= @service.name
+
+  ._two_buttons
+    a._button href=services_path Назад
+
+    = link_to 'Записаться', appointment_path( s: @service.id ), class: '_button _get_it'
+
+  .page-content.semi-transparent.narrow
+    = simple_format @service.description
+
+    = render partial: 'partials/sharebox'

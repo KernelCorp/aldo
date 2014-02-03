@@ -1,0 +1,58 @@
+.select {
+  display: inline-block;
+  line-height: 0;
+  position: relative;
+
+  [type='text'] {
+    cursor: text;
+  }
+  [readonly] {
+    cursor: pointer;
+  }
+  [disabled] {
+    cursor: default;
+  }
+  
+  > .select_list {
+    position: absolute;
+    top: $element_height;
+    right: 0;
+    left: 0;
+
+    z-index: 1;
+    overflow-y: auto;
+
+    width: 100%;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    background: $element_background;
+    border: $element_border;
+
+    > .select_option {
+      padding: $element_padding;
+      line-height: $element_height - 2 * nth( $element_padding, 1 ) - 2 * nth( $element_border, 1 );
+      cursor: pointer;
+    }
+    > .on {
+      cursor: default;
+    }
+    > .not_matching, > .unselectable {
+      display: none;
+    }
+  }
+}
+
+.select_list {
+  display: none;
+
+  .select.on > & {
+    display: block;
+  }
+
+  .select.empty_list > & {
+    display: none;
+  }
+}

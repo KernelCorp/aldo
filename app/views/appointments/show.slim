@@ -1,0 +1,97 @@
+.ajok_data data={ back: '/images/background/News.jpeg' }
+
+.page.center
+
+  h1 Запись
+
+  #appointment_form.page-content
+    = simple_form_for @appointment, url: appointment_path do |f|
+      div
+        label for='service_input' Услуга <abbr title='required'>*</abbr>
+        #service_select.select
+          input.select_current#service_input type='text' required=true
+          = f.input_field :service_id, type: 'hidden', class: 'select_input'
+          .select_list
+            - Service.all.each do |s|
+              .select_option data={ select: s.id } = s.name
+        = f.error :service_id
+
+      div 
+        label for='master_input' Мастер
+        #master_select.select
+          input.select_current#master_input type='text'
+          = f.input_field :master_id, type: 'hidden', class: 'select_input'
+          .select_list
+            - Master.all.each do |m|
+              .select_option data={ select: m.id, skills: m.services.map{ |s| s.id }.join(' ') } = m.fio
+        = f.error :master_id
+
+      = f.input :fio
+      = f.input :phone, pattern: '^(\D*\d\D*){11,}$'
+      = f.input :email
+
+      div
+        .appointment_notice._col <abbr title='required'>*</abbr> - обязательные поля
+
+        = f.button :button, 'Отправить заявку'
+
+- if params[:s]
+  javascript:
+    $('#service_select')
+    .mousedown()
+    .find('.select_option').filter("[data-select=#{params[:s]}]")
+    .mousedown()
+
+- if params[:m]
+  javascript:
+    $('#master_select')
+    .mousedown()
+    .find('.select_option').filter("[data-select=#{params[:m]}]")
+    .mousedown()
+
+coffee:
+  form = $ '#appointment_form'
+
+
+  form.find('.select_input').on 'change', ( e, choosen )->
+    return if choosen == undefined
+
+    unless choosen
+      $(this)
+      .siblings('.select_current').val('')
+      .siblings('.select_list').find('.not_matching').removeClass('not_matching')
+
+
+  form.find('#service_select .select_input').on 'change', ( e, choosen )->
+    return if choosen == undefined
+
+    select = form.find '#master_select'
+    options = select.find '.select_option'
+
+    unless choosen
+      options.removeClass 'unselectable'
+    else
+      regexp = new RegExp( "\\b" + choosen.data('select') + "\\b" )
+      options.each ()->
+        $(this).toggleClass( 'unselectable', !regexp.test($(this).data('skills')) )
+
+    select.toggleClass 'empty_list', !options.is(':not(.unselectable)')
+
+    select.find('.select_current').prop('readonly', select.hasClass('empty_list'))
+
+
+
+  form.find('#master_select .select_input').on 'change', ( e, choosen )->
+    return if choosen == undefined
+
+    select = form.find '#service_select'
+    options = select.find '.select_option'
+
+    unless choosen
+      options.removeClass 'unselectable'
+    else
+      skills = choosen.data('skills')
+      options.each ()->
+        $(this).toggleClass( 'unselectable', !(new RegExp("\\b"+$(this).data('select')+"\\b")).test(skills) )
+
+    select.toggleClass 'empty_list', !options.is(':not(.unselectable)')
