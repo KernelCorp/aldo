@@ -1,0 +1,23 @@
+$element_height: 2.1em;
+$element_padding: 0.2em 0.6em;
+$element_border: 0.1em solid hsl(0,0,80);
+$element_radius: 0em;
+$element_background: white;
+
+$text_line: 1.3em;
+$form_line: 2.4em;
+
+%proto_element {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  min-height: $element_height;
+  line-height: $element_height - 2 * nth( $element_border, 1 ) - 2 * nth( $element_padding, 1 );
+  padding: $element_padding;
+  border: $element_border;
+  border-radius: $element_radius;
+  background: $element_background;
+
+  font-size: inherit;
+}

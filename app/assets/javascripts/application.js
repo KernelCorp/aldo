@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= include ajok
+//
 //= include yoxview_settings
+//
+//= include global
+//= include ajok
+//= include select

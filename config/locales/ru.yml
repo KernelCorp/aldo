@@ -13,6 +13,7 @@ ru:
     name: Имя
     description: Описание
     preview: Превью
+    background: Фон
 
   activerecord:
     models:
@@ -77,6 +78,7 @@ ru:
         background: Фон слайда
       master:
         biography: Биография
+        services: Умения
       image:
         title: Название
         preview: Предпросмотр

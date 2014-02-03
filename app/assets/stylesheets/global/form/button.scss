@@ -1,0 +1,13 @@
+button, .button {
+  @extend %proto_element;
+
+  text-align: center;
+  cursor: pointer;
+
+  &.on, input:checked + & { 
+    cursor: default; 
+  }
+
+  display: inline-block;
+  vertical-align: middle;
+}

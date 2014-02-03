@@ -1,13 +1,16 @@
-@import
-'global/col',
-
+@import 
 'common/reset',
-'common/main',
-'common/ie',
 
+'global/col',
+'global/settings',
+'global/form/elements',
+
+'common/main',
 'common/main_1',
 'common/background',
 'common/yoxview_button',
+
+'common/form',
 
 'views/main/*',
 'views/*';

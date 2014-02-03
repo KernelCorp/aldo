@@ -1,0 +1,96 @@
+#appointment_form {
+  margin-top: 20px;
+
+  font-size: 20px;
+  line-height: $form_line;
+
+  [title="required"] {
+    display: initial;
+  }
+
+  label {
+    display: inline-block;
+    vertical-align: baseline;
+
+    width: 150px;
+  }
+
+  input, .select, button {
+    width: 350px;
+  }
+
+  button {
+    border: none;
+    color: hsl( 0,0,40 );
+    background: hsl( 0,0,80 );
+
+    &:hover {
+      color: white;
+      background: hsl( 0,0,56 );
+    }
+    &:active {
+      color: black;
+      background: white;
+    }
+  }
+
+  input:hover, input:focus, .select.on input {
+    border-color: hsl( 0,0,56 );
+  }
+
+  .select {
+    > .select_list {
+      border-color: hsl( 0,0,56 );
+
+      > div {
+        &:hover {
+          background: hsl( 0,0,80 );
+        }
+
+        &.on {
+          color: white;
+          background: hsl( 0,0,56 );
+        }
+      }
+    }
+
+    &.on > .select_list {
+      top: 0px;
+      left: 355px;
+      right: auto;
+      width: auto;
+      display: table;
+    }
+    &.empty_list > .select_list {
+      display: none;
+    }
+
+    &.on:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0px;
+      left: 100%;
+      width: 0px;
+      height: 0px;
+      border-color: transparent hsl( 0,0,56 );
+      border-style: solid;
+      border-width: 21px 5px 21px 0px;
+    }
+
+    &.empty_list:before {
+      display: none;
+    }
+
+    &.empty_list .select_current {
+      border-color: transparent !important;
+      cursor: default;
+    }
+  }
+
+  .appointment_notice {
+    width: 150px;
+    text-transform: none;
+    font-size: 12px;
+  }
+}

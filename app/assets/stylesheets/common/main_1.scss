@@ -50,6 +50,7 @@ html, body {
 
 ._button_list {
   display: inline-block;
+  vertical-align: top;
 
   + ._button_list {
     margin-left: 20px;
@@ -66,6 +67,11 @@ html, body {
 
 .share-box .button {
   text-transform: uppercase;
+  border: none;
+  min-height: 0;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 .page-content.semi-narrow.semi-transparent {

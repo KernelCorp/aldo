@@ -4,9 +4,6 @@ Aldo::Application.routes.draw do
   mount ActiveAdmin::Tinymce::Engine => '/', as: 'admin_editor'
 
 
-
-
-
   root to: 'main#index'
 
   get 'contacts', to: 'main#contacts'
@@ -27,5 +24,5 @@ Aldo::Application.routes.draw do
   resources :productions, only: [:index, :show]
   resources :services, only: [:index, :show]
 
-  get 'appointment', to: 'appointments#new'
+  resource :appointment, only: [:show, :create]
 end

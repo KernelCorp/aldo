@@ -1,0 +1,12 @@
+input {
+  @extend %proto_element;
+
+  display: inline-block;
+  vertical-align: middle;
+
+  height: $element_height;
+}
+
+textarea {
+  @extend %proto_element;
+}

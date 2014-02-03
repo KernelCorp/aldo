@@ -5,14 +5,7 @@
   .marked РАСКРОЙТЕ ТЫСЯЧИ ГРАНЕЙ ВАШЕЙ КРАСОТЫ <br> С УСЛУГАМИ ALDO COPPOLA
 
   div
-    ._button_list
-      a._button href="/about/biography/" Мастера
-      a._button href="/about/biography/" Интерьеры
-      a._button href="/about/biography/" Мастера
-      a._button href="/about/biography/" Интерьеры
-
-    ._button_list
-      a._button href="/about/biography/" Мастера
-      a._button href="/about/biography/" Интерьеры
-      a._button href="/about/biography/" Мастера
-      a._button href="/about/biography/" Интерьеры
+    - Service.all.each_slice( (Service.count.round(2)*0.5).ceil ).each do |services_group|
+      ._button_list
+        - services_group.each do |s|
+          a._button href=service_path(s) = s.name

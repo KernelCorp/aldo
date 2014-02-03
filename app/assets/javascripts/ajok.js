@@ -92,7 +92,7 @@ Ajok_Container.prototype =
       if( this.cache[ key ] )
       {
         this.changeRoom(
-          ( position == 'old' ) ? 'old_cache' : position, 
+          position == 'old' ? 'old_cache' : position, 
           key,
           url,
           this.cache[ key ], 
@@ -155,7 +155,7 @@ Ajok_Container.prototype =
 window.addEventListener('popstate', function(event) {
   if ( !event.state || !event.state.who ) return;
   var who = ( event.state.i > ajok.state.i ) ? event.state.who : ajok.state.who;
-  $( who ).data('container').request( 'old', event.state[who] );
+  $( who ).data('container').request( 'old', event.state[who], window.location.pathname.toString() );
 });
 
 //local
@@ -198,11 +198,11 @@ if ( history.pushState ) {
       }
     });
 
-  $(function(){
+  doc.ready(function(){
     aj = new AJ( '#content', window.location.pathname.toString(), $('#content').children() );
   });
 
-  $(document).on('mousedown', 'a[href^="/"]', function(e){
+  doc.on('mousedown', 'a[href^="/"]', function(e){
     var t = $(this);
 
     if( !t.attr('target') && !t.data('remote') ){

@@ -1,4 +1,10 @@
 class AppointmentsController < ApplicationController
-  def new
+  def show
+  end
+
+  def create
+    Appointment.create! params[:appointment]
+  rescue
+    redirect_to action: 'show'
   end
 end
