@@ -33,6 +33,8 @@
 
         = f.button :button, 'Отправить заявку'
 
+        div style='float: right;' = flash[:alert]
+
 - if params[:s]
   javascript:
     $('#service_select')
