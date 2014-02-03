@@ -5,7 +5,7 @@
   h1 Запись
 
   #appointment_form.page-content
-    = simple_form_for Appointment.new, url: appointment_path do |f|
+    = simple_form_for @appointment, url: appointment_path do |f|
       div
         label for='service_input' Услуга <abbr title='required'>*</abbr>
         #service_select.select
@@ -14,6 +14,7 @@
           .select_list
             - Service.all.each do |s|
               .select_option data={ select: s.id } = s.name
+        = f.error :service_id
 
       div 
         label for='master_input' Мастер
@@ -23,6 +24,7 @@
           .select_list
             - Master.all.each do |m|
               .select_option data={ select: m.id, skills: m.services.map{ |s| s.id }.join(' ') } = m.fio
+        = f.error :master_id
 
       = f.input :fio
       = f.input :phone, pattern: '^(\D*\d\D*){11,}$'
@@ -32,8 +34,6 @@
         .appointment_notice._col <abbr title='required'>*</abbr> - обязательные поля
 
         = f.button :button, 'Отправить заявку'
-
-        div style='float: right;' = flash[:alert]
 
 - if params[:s]
   javascript:

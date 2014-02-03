@@ -1,14 +1,13 @@
 class AppointmentsController < ApplicationController
   def show
+    @appointment = Appointment.new
   end
 
   def create
-    appointment = Appointment.new params[:appointment]
+    @appointment = Appointment.new params[:appointment]
 
-    unless appointment.save
-      error = appointment.errors.messages.first
-      flash.alert = "#{error[0]} #{error[1][0]}"
-      redirect_to action: 'show'
+    unless @appointment.save
+      render 'show'
     end
   end
 end
