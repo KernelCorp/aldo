@@ -1,0 +1,3 @@
+._production_line
+  - Brend.all.each do |brend|
+    a._button href=( brend.products.count == 0 ? brend_path(brend) : brend_products_path(brend) ) = brend.name

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140203075109) do
+ActiveRecord::Schema.define(:version => 20140203121905) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -58,6 +58,19 @@ ActiveRecord::Schema.define(:version => 20140203075109) do
 
   add_index "appointments", ["master_id"], :name => "index_appointments_on_master_id"
   add_index "appointments", ["service_id"], :name => "index_appointments_on_service_id"
+
+  create_table "brends", :force => true do |t|
+    t.string   "name"
+    t.string   "header"
+    t.text     "text"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
+    t.string   "slug"
+  end
+
+  add_index "brends", ["slug"], :name => "index_brends_on_slug", :unique => true
 
   create_table "galleries", :force => true do |t|
     t.string "title"
@@ -130,6 +143,20 @@ ActiveRecord::Schema.define(:version => 20140203075109) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "products", :force => true do |t|
+    t.integer  "brend_id"
+    t.string   "name"
+    t.text     "text"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
+    t.string   "slug"
+  end
+
+  add_index "products", ["brend_id"], :name => "index_products_on_brend_id"
+  add_index "products", ["slug"], :name => "index_products_on_slug", :unique => true
 
   create_table "services", :force => true do |t|
     t.string   "name"

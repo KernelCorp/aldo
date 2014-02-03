@@ -1,0 +1,13 @@
+.ajok_data data={ back: @brend.background.url, menu: 5 }
+
+.page
+  h1.grey Продукция
+
+  = render "/brends/line"
+
+  .marked= @brend.header
+
+  div
+    ._button_list
+      - @brend.products.all.each do |p|
+        a._button href=brend_product_path( @brend, p ) = p.name

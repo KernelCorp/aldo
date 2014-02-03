@@ -10,8 +10,10 @@ ru:
     full_name: ФИО
     photo: Фото
     title: Заголовок
+    header: Заголовок
     name: Имя
     description: Описание
+    text: Текст
     preview: Превью
     background: Фон
 
@@ -62,6 +64,16 @@ ru:
         few: Заявки
         many: Заявок
         other: Заявки
+      brend:
+        one: Бренд
+        few: Бренда
+        many: Брендов
+        other: Бренды
+      product:
+        one: Продукт
+        few: Продукта
+        many: Продуктов
+        other: Продукты
 
     attributes:
       gallery:

@@ -1,0 +1,13 @@
+.ajok_data data={ back: @brend.background.url, menu: 5 }
+
+.page.brend
+  h1.grey Продукция
+
+  = render "/brends/line"
+
+  .marked= @brend.header
+
+  div class='page-content semi-narrow semi-transparent' style="padding: 20px; text-transform: none; margin-bottom: 20px;" 
+    = simple_format @brend.text
+
+    = render partial: 'partials/sharebox'

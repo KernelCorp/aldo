@@ -21,8 +21,11 @@ Aldo::Application.routes.draw do
   resources :news, only: [:index, :show]
   get 'news/offset/:offset', to: 'news#index_line'
   
-  resources :productions, only: [:index, :show]
   resources :services, only: [:index, :show]
-
+  
   resource :appointment, only: [:show, :create]
+
+  resources :brends, only: [:show] do
+    resources :products, only: [:index, :show]
+  end
 end

@@ -1,0 +1,12 @@
+.ajok_data data={ back: @product.background.url }
+
+.page.item
+  h1 Продукция
+  .marked= @product.name
+
+  a._button href=brend_products_path( @product.brend ) Назад
+
+  .page-content.semi-transparent.narrow
+    = simple_format @product.text
+
+    = render partial: 'partials/sharebox'
