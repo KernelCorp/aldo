@@ -1,4 +1,4 @@
-.ajok_data data={ back: @brend.background.url, menu: 5 }
+.ajok_data data={ back: (@brend.background.exists? ? @brend.background.url : false), menu: 5 }
 
 .page
   h1.grey Продукция

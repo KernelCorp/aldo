@@ -1,4 +1,4 @@
-.ajok_data data={ back: @product.background.url }
+.ajok_data data={ back: (@product.background.exists? ? @product.background.url : false) }
 
 .page.item
   h1 Продукция
