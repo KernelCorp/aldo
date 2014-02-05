@@ -1,5 +1,16 @@
 .ajok_data data={ back: (@product.background.exists? ? @product.background.url : false) }
 
+coffee:
+  ajok_data = $ '.ajok_data'
+
+  return unless ajok_data.data 'back'
+
+  ajok_data.ajok_toggle ( x )->
+    $('#_background').css
+      backgroundSize: ( if x then 'contain' else '' )
+      backgroundPosition: ( if x then 'right' else '' )
+      backgroundColor: ( if x then 'black' else '' )
+
 .page.item
   h1 Продукция
   .marked= @product.name

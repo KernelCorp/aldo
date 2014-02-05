@@ -8,6 +8,12 @@ jQuery.fn.extend({
     return this.on('ajok:detach', function(e){
       if( e.target == this ) fun();
     });
+  },
+  ajok_toggle: function( fun ) {
+    this
+    .on('ajok:attach', function(e){ if( e.target == this ) fun( 1 ); })
+    .on('ajok:detach', function(e){ if( e.target == this ) fun( 0 ); });
+    return this;
   }
 });
 
